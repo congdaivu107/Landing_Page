@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Bán Nước Dễ Thương</title>
+    <link rel="icon" type="image/png" href="drink.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+            min-height: 100vh;
+            font-family: 'Quicksand', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .cute-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 36px;
+            box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18), 0 2px 8px #fff8fc;
+            padding: 2.5rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: box-shadow 0.3s, transform 0.3s;
+            animation: fadeIn 0.7s;
+        }
+
+        .cute-card:hover {
+            box-shadow: 0 16px 48px 0 #ffb6d5, 0 2px 8px #fff8fc;
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .step-title {
+            color: #ff80ab;
+            font-weight: bold;
+            text-shadow: 0 2px 8px #ffe3f0;
+        }
+
+        .emoji-btn {
+            font-size: 2.3rem;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffe3f0 60%, #e0f7fa 100%);
+            box-shadow: 0 4px 18px rgba(255, 128, 171, 0.13), 0 0 0 0 #ffb6d5;
+            margin: 0.7rem;
+            border: none;
+            transition: 0.18s cubic-bezier(.4, 2, .6, 1), box-shadow 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-weight: 700;
+            color: #ff80ab;
+            cursor: pointer;
+        }
+
+        .emoji-btn span {
+            font-size: 1.08rem;
+            color: #ff80ab;
+            font-weight: 600;
+        }
+
+        .emoji-btn.selected,
+        .emoji-btn:hover {
+            background: linear-gradient(135deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #fff;
+            box-shadow: 0 8px 32px 4px #ffb6d5, 0 2px 8px #fff8fc;
+            border: 3px solid #ff80ab;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1) translateY(0);
+            }
+
+            30% {
+                transform: scale(1.15) translateY(-10px);
+            }
+
+            60% {
+                transform: scale(0.95) translateY(2px);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .emotion-bounce {
+            animation: bounce 0.4s;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(255, 128, 171, 0.10), 0 0 12px #ffb6d5;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .btn-main:disabled {
+            opacity: 0.6;
+        }
+
+        .btn-main:hover,
+        .btn-main:focus {
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px #ffb6d5, 0 2px 8px #fff8fc;
+        }
+
+        @media (max-width: 600px) {
+            .cute-card {
+                padding: 1.2rem 0.3rem;
+                border-radius: 18px;
+                max-width: 98vw;
+            }
+
+            .emoji-btn {
+                font-size: 1.3rem;
+                width: 60px;
+                height: 60px;
+                margin: 0.3rem;
+            }
+
+            .emoji-btn span {
+                font-size: 0.9rem;
+            }
+
+            .btn-main {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+                border-radius: 16px;
+            }
+
+            .step-title {
+                font-size: 1.1rem !important;
+            }
+
+            img[alt="drink icon"] {
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4"
+            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"
+                style="vertical-align:middle;margin-bottom:6px;">
+                <path
+                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
+                    fill="#ff80ab" />
+            </svg>
+            Menu Bán Nước Dễ Thương
+        </h1>
+        <div id="step-1" class="cute-card cute-bg">
+            <div class="text-center mb-3">
+                <img src="drink.png" alt="drink icon"
+                    style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffb6d5);margin-bottom:0.5rem;">
+            </div>
+            <div class="step-title text-center" style="font-size:1.7rem;color:#ff80ab;font-weight:bold;">Hôm nay bạn cảm
+                thấy thế nào?</div>
+            <div class="mb-2 text-center" style="color:#888;font-size:1.08rem;">Hãy chọn cảm xúc của bạn để quán gợi ý
+                món nước phù hợp nhé!</div>
+            <div class="d-flex flex-wrap justify-content-center mb-3">
+                <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span>Crush chưa rep tin nhắn-Vừa buồn nhẹ vừa hồi hộp</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Mệt mỏi', this)">😩🛌<span>Mệt mỏi toàn tập-Muốn tỉnh táo liền</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Tăng động', this)">😝🔥<span>Tăng động quá đà-Muốn gì đó "đã miệng"</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Lạnh lùng', this)">😎🧊<span>Lạnh lùng hờ hững-Cần gì đó lạnh-tỉnh"</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Chill', this)">😌🌿<span>Chill nhẹ tâm trạng tốt-Thoải mái, thanh mát</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Nổi loạn', this)">🔥🧨<span>Nổi loạn muốn phá-Cần món thật lạ, bùng nổ</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Buồn', this)">😔💭<span>Buồn hiu không lý do-Muốn được an ủi vị giác </span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Hy vọng', this)">🐣☘️<span>Hy vọng nhẹ nhàng-Mong tươi sáng, nhẹ nhàng</span></button>
+                <button class="emoji-btn" onclick="selectEmotion('Lạc quan', this)">🍓🥰<span>Lạc quan là có thật-Muốn gì đó ngon-vui</span></button>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-main px-4" onclick="goToStep2()" id="emotion-next" disabled>Tiếp tục <svg
+                        width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg></button>
+            </div>
+        </div>
+        <script>
+            let selectedEmotion = '';
+            function selectEmotion(emotion, btn) {
+                selectedEmotion = emotion;
+                document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                btn.classList.add('emotion-bounce');
+                setTimeout(() => btn.classList.remove('emotion-bounce'), 400);
+                document.getElementById('emotion-next').disabled = false;
+            }
+            function goToStep2() {
+                if (!selectedEmotion) return;
+                localStorage.setItem('selectedEmotion', selectedEmotion);
+                window.location.href = 'page2.html';
+            }
+        </script>
+    </div>
+</body>
+
+</html>

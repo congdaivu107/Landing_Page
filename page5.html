@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng quay may mắn - Menu Bán Nước Dễ Thương</title>
+    <link rel="icon" type="image/png" href="drink.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+            min-height: 100vh;
+            font-family: 'Quicksand', Arial, sans-serif;
+        }
+
+        .cute-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 36px;
+            box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18), 0 2px 8px #fff8fc;
+            padding: 2rem 1.2rem;
+            max-width: 420px;
+            margin: 2rem auto;
+            animation: fadeIn 0.7s;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .cute-card:hover {
+            box-shadow: 0 16px 48px 0 #ffb6d5, 0 2px 8px #fff8fc;
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lucky-wheel {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 8px solid #ffb74d;
+            margin: 0 auto 1rem auto;
+            position: relative;
+            background: conic-gradient(#ffe082 0% 20%, #b2ebf2 20% 40%, #f8bbd0 40% 60%, #c8e6c9 60% 80%, #ffd54f 80% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(255, 183, 77, 0.13);
+            transition: 0.4s;
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.2rem;
+            color: #ff7043;
+            filter: drop-shadow(0 2px 4px #fff8fc);
+        }
+
+        .btn-main,
+        .btn-back {
+            min-width: 180px;
+            width: 180px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2rem;
+            padding: 0.7rem 2.2rem;
+            border-radius: 24px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(255, 128, 171, 0.10);
+            transition: 0.2s;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
+            color: #fff;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .btn-main:hover,
+        .btn-main:focus {
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(255, 128, 171, 0.18);
+        }
+
+        .btn-back {
+            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
+            color: #fff;
+            border: none;
+            outline: none;
+        }
+
+        .btn-back:hover,
+        .btn-back:focus {
+            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
+        }
+
+        .lucky-result {
+            font-size: 1.3rem;
+            color: #ff7043;
+            font-weight: bold;
+            margin-top: 1.2rem;
+            min-height: 2.2rem;
+        }
+
+        .step-title {
+            color: #ff80ab;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .cute-card {
+                padding: 1.2rem 0.3rem;
+                border-radius: 18px;
+            }
+
+            .lucky-wheel {
+                width: 110px;
+                height: 110px;
+            }
+
+            .btn-main,
+            .btn-back {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-3">
+        <h1 class="text-center mb-4"
+            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
+                style="vertical-align:middle;margin-bottom:4px;">
+                <path
+                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
+                    fill="#ff80ab" />
+            </svg>
+            Menu Bán Nước Dễ Thương
+        </h1>
+    </div>
+    <div class="cute-card">
+        <div class="text-center mb-3">
+            <img src="drink.png" alt="drink icon"
+                style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffd54f);margin-bottom:0.5rem;">
+        </div>
+        <div class="step-title text-center">Vòng quay may mắn - Quay để nhận topping tặng thêm!</div>
+        <div class="mb-4 text-center" style="color:#888;font-size:1.05rem;">Chúc bạn may mắn nhận được topping hấp dẫn
+            từ quán nhé!</div>
+        <div class="lucky-wheel" id="lucky-wheel"
+            style="background:none;box-shadow:none;border:none;position:relative;width:220px;height:220px;">
+            <svg id="wheel-svg" width="320" height="320" viewBox="0 0 320 320" style="display:block;margin:0 auto;">
+                <g id="wheel-slices">
+                    <!-- Các lát sẽ được vẽ bằng JS -->
+                </g>
+            </svg>
+            <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);z-index:2;">
+                <svg width="36" height="28" viewBox="0 0 36 28">
+                    <polygon points="18,0 36,28 0,28" fill="#ff7043" stroke="#fff" stroke-width="2" />
+                </svg>
+            </div>
+            <div id="wheel-label"
+                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.2rem;font-weight:bold;color:#ff7043;pointer-events:none;z-index:1;">
+            </div>
+        </div>
+        <div class="lucky-result" id="lucky-result"></div>
+        <div class="text-center mt-4">
+            <button class="btn-main px-4" onclick="spinWheel()" id="spin-btn">Quay ngay <svg width="20" height="20"
+                    fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="2" />
+                    <path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg></button>
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn-back px-4" onclick="history.back()">Quay lại</button>
+        </div>
+        <div id="confetti"
+            style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;">
+        </div>
+    </div>
+    <script>
+        const toppings = ['Trân châu', 'Thạch đào', 'Vải', 'Đào', 'Thạch dừa'];
+        const toppingColors = ['#ffe082', '#b2ebf2', '#f8bbd0', '#c8e6c9', '#ffd54f'];
+        // SVG sticker cho từng topping
+        const toppingIcons = {
+            'Trân châu': `<svg width='28' height='28' viewBox='0 0 38 38' fill='none'><circle cx='19' cy='19' r='13' fill='#222'/><circle cx='19' cy='19' r='13' stroke='#ff80ab' stroke-width='2.5'/></svg>`,
+            'Thạch đào': `<svg width='28' height='28' viewBox='0 0 38 38' fill='none'><ellipse cx='19' cy='23' rx='10' ry='8' fill='#ffb74d' stroke='#ff80ab' stroke-width='2.5'/><path d='M19 15 Q22 10 27 13' stroke='#81c784' stroke-width='2.5' fill='none'/></svg>`,
+            'Vải': `<svg width='28' height='28' viewBox='0 0 38 38' fill='none'><ellipse cx='19' cy='22' rx='9' ry='8' fill='#fffde7' stroke='#ff80ab' stroke-width='2.5'/><circle cx='19' cy='22' r='3' fill='#ffd54f'/><ellipse cx='19' cy='22' rx='9' ry='8' stroke='#b2ebf2' stroke-width='1.2'/></svg>`,
+            'Đào': `<svg width='28' height='28' viewBox='0 0 38 38' fill='none'><ellipse cx='19' cy='23' rx='10' ry='8' fill='#ffb74d' stroke='#ff80ab' stroke-width='2.5'/><ellipse cx='23' cy='17' rx='3' ry='2' fill='#81c784'/></svg>`,
+            'Thạch dừa': `<svg width='28' height='28' viewBox='0 0 38 38' fill='none'><ellipse cx='19' cy='22' rx='9' ry='8' fill='#fff' stroke='#ff80ab' stroke-width='2.5'/><ellipse cx='19' cy='22' rx='9' ry='8' stroke='#b2ebf2' stroke-width='1.2'/><ellipse cx='19' cy='22' rx='4' ry='3' fill='#b2ebf2'/></svg>`
+        };
+        let spinning = false;
+        let wheelDeg = 0;
+        // Vẽ vòng quay SVG
+        function drawWheel() {
+            const n = toppings.length;
+            const center = 160;
+            const radius = 145;
+            const sliceAngle = 2 * Math.PI / n;
+            let svg = '';
+            for (let i = 0; i < n; i++) {
+                const startAngle = i * sliceAngle - Math.PI / 2;
+                const endAngle = (i + 1) * sliceAngle - Math.PI / 2;
+                const x1 = center + radius * Math.cos(startAngle);
+                const y1 = center + radius * Math.sin(startAngle);
+                const x2 = center + radius * Math.cos(endAngle);
+                const y2 = center + radius * Math.sin(endAngle);
+                const largeArc = sliceAngle > Math.PI ? 1 : 0;
+                svg += `<path d='M${center},${center} L${x1},${y1} A${radius},${radius} 0 0,1 ${x2},${y2} Z' fill='${toppingColors[i]}' stroke='#ffb74d' stroke-width='3'/>`;
+                // Tên topping
+                const textAngle = startAngle + sliceAngle / 2;
+                const tx = center + 95 * Math.cos(textAngle);
+                const ty = center + 95 * Math.sin(textAngle) + 10;
+                svg += `<text x='${tx}' y='${ty}' text-anchor='middle' font-size='1.1rem' font-family='Quicksand,Arial,sans-serif' fill='#ff80ab' font-weight='700'>${toppings[i]}</text>`;
+            }
+            document.getElementById('wheel-slices').innerHTML = svg;
+        }
+        drawWheel();
+        function spinWheel() {
+            if (spinning) return;
+            spinning = true;
+            document.getElementById('spin-btn').disabled = true;
+            const n = toppings.length;
+            // Quay random đến 1 topping
+            const luckyIdx = Math.floor(Math.random() * n);
+            // Quay nhiều vòng rồi dừng đúng topping
+            const extraRounds = 5;
+            const degPerSlice = 360 / n;
+            const targetDeg = 360 * extraRounds + (360 - luckyIdx * degPerSlice - degPerSlice / 2);
+            const wheel = document.getElementById('wheel-svg');
+            wheel.style.transition = 'transform 2.2s cubic-bezier(.4,2,.6,1)';
+            wheel.style.transform = `rotate(${targetDeg + wheelDeg}deg)`;
+            wheelDeg += targetDeg;
+            setTimeout(() => {
+                const luckyTopping = toppings[luckyIdx];
+                document.getElementById('wheel-label').innerHTML = `<span style='font-size:1.5rem;'>${toppingIcons[luckyTopping] || '✨'} </span>`;
+                document.getElementById('lucky-result').innerHTML = `🎉 <span style='color:#ff80ab;font-size:1.2rem;font-weight:bold;'>Chúc mừng bạn nhận được topping: ${toppingIcons[luckyTopping] || '✨'} <b>${luckyTopping}</b></span>`;
+                showConfetti();
+                setTimeout(() => {
+                    spinning = false;
+                    localStorage.setItem('luckyTopping', luckyTopping);
+                    window.location.href = 'page6.html';
+                }, 2000);
+            }, 2200);
+        }
+        function showConfetti() {
+            const confetti = document.getElementById('confetti');
+            if (!confetti) return;
+            confetti.innerHTML = '';
+            confetti.style.display = 'block';
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                el.style.position = 'absolute';
+                el.style.left = Math.random() * 100 + '%';
+                el.style.top = '-20px';
+                el.style.width = '12px';
+                el.style.height = '12px';
+                el.style.borderRadius = '50%';
+                el.style.background = `hsl(${Math.random() * 360},80%,70%)`;
+                el.style.opacity = 0.8;
+                el.style.transition = 'top 1.2s cubic-bezier(.4,2,.6,1), opacity 1.2s';
+                confetti.appendChild(el);
+                setTimeout(() => {
+                    el.style.top = '90%';
+                    el.style.opacity = 0;
+                }, 10);
+            }
+            setTimeout(() => { confetti.style.display = 'none'; }, 1400);
+        }
+    </script>
+</body>
+
+</html>

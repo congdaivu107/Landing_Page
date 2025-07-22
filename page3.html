@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gợi ý món nước</title>
+    <link rel="icon" type="image/png" href="drink.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+            min-height: 100vh;
+            font-family: 'Quicksand', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .cute-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 36px;
+            box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18), 0 2px 8px #fff8fc;
+            padding: 2.5rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: box-shadow 0.3s, transform 0.3s;
+            animation: fadeIn 0.7s;
+        }
+
+        .cute-card:hover {
+            box-shadow: 0 16px 48px 0 #ffb6d5, 0 2px 8px #fff8fc;
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .step-title {
+            color: #ff80ab;
+            font-weight: bold;
+            text-shadow: 0 2px 8px #ffe3f0;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            border-radius: 24px;
+            box-shadow: 0 2px 8px rgba(255, 128, 171, 0.10), 0 0 12px #ffb6d5;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .btn-main:hover,
+        .btn-main:focus {
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px #ffb6d5, 0 2px 8px #fff8fc;
+        }
+
+        .btn-back {
+            font-size: 1.2rem;
+            padding: 0.7rem 2.2rem;
+            border-radius: 24px;
+            font-weight: 700;
+            min-width: 120px;
+            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(178, 190, 195, 0.10);
+            transition: 0.2s;
+            margin-right: 0.5rem;
+            outline: none;
+        }
+
+        .btn-back:hover,
+        .btn-back:focus {
+            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
+        }
+
+        .drink-info-card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 28px;
+            box-shadow: 0 2px 16px #ffb6d5;
+            padding: 1.2rem 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .drink-info-card:hover {
+            box-shadow: 0 8px 32px #ffb6d5;
+            transform: scale(1.03);
+        }
+
+        .drink-info-card h4 {
+            color: #ff80ab;
+            font-weight: bold;
+            margin-top: 0.7rem;
+        }
+
+        .drink-info-card .fw-bold {
+            color: #ff7043;
+            font-size: 1.1rem;
+        }
+
+        .drink-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(255, 128, 171, 0.13);
+            margin-bottom: 1rem;
+            border: 3px solid #ffe3f0;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px #ffb6d5;
+            padding: 1rem 0.7rem 0.7rem 0.7rem;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.18s;
+            margin-bottom: 1.2rem;
+            justify-content: space-between; 
+            height: 250px; 
+            min-height: 250px; 
+            text-align: center;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 24px #ffb6d5;
+            transform: scale(1.04);
+        }
+
+        .product-img {
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-weight: 700;
+            color: #ff80ab;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .product-price {
+            color: #ff7043;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .cute-card {
+                padding: 1.2rem 0.3rem;
+                border-radius: 18px;
+                max-width: 98vw;
+            }
+
+            .drink-info-card {
+                border-radius: 14px;
+                padding: 0.7rem 0.3rem;
+            }
+
+            .drink-img {
+                width: 70px;
+                height: 70px;
+                border-radius: 12px;
+            }
+
+            .btn-main,
+            .btn-back {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+                border-radius: 16px;
+            }
+
+            .product-card {
+                border-radius: 10px;
+                padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+                min-height: 80px;
+            }
+
+            .product-img {
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+            }
+
+            .product-name {
+                font-size: 0.9rem;
+            }
+
+            .step-title {
+                font-size: 1.1rem !important;
+            }
+
+            img[alt="drink icon"] {
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+        #other-products-list .product-card {
+            flex: 1 1 200px;
+            max-width: 240px; 
+            box-sizing: border-box; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4"
+            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"
+                style="vertical-align:middle;margin-bottom:6px;">
+                <path
+                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
+                    fill="#ff80ab" />
+            </svg>
+            Menu Bán Nước Dễ Thương
+        </h1>
+        <div id="step-3" class="cute-card cute-bg">
+            <div class="text-center mb-3">
+                <img src="drink.png" alt="drink icon"
+                    style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffb6d5);margin-bottom:0.5rem;">
+            </div>
+            <div class="step-title text-center" style="font-size:1.5rem;">Gợi ý món nước cho bạn</div>
+            <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Đây là món nước hợp với cảm xúc và khẩu
+                vị của bạn nhất hôm nay!</div>
+            <div class="drink-info-card animate__animated animate__fadeInDown">
+                <img id="drink-img" class="drink-img" src="" alt="Ly nước">
+                <h4 id="drink-name"></h4>
+                <p id="drink-desc"></p>
+                <div id="drink-price" class="fw-bold mb-2"></div>
+                <div class="mb-2 d-flex align-items-center justify-content-center" style="gap:0.5rem;">
+                    <label for="drink-qty" style="margin-bottom:0;font-weight:600;color:#ff80ab;">Số lượng:</label>
+                    <input id="drink-qty" type="number" min="1" value="1"
+                        style="width:60px;border-radius:8px;border:1.5px solid #ffb6d5;padding:2px 8px;font-size:1.1rem;text-align:center;outline:none;" />
+                </div>
+            </div>
+            <div class="text-center mt-4 mb-2">
+                <button class="btn-back me-2" onclick="backToStep2()">Quay lại</button>
+                <button class="btn btn-main px-4" onclick="goToStep5()">Tiếp tục <svg width='20' height='20' fill='none'
+                        viewBox='0 0 24 24'>
+                        <path d='M9 18l6-6-6-6' stroke='#fff' stroke-width='2' stroke-linecap='round'
+                            stroke-linejoin='round' />
+                    </svg></button>
+            </div>
+            <hr style="margin:2rem 0 1rem 0;opacity:0.3;">
+            <div>
+                <div class="step-title" style="font-size:1.2rem;color:#ff80ab;">Các sản phẩm khác của quán</div>
+                <div class="row" id="other-products-list"></div>
+            </div>
+        </div>
+        <script>
+            // Dữ liệu món nước mẫu (có thể mở rộng)
+            const drinks = [
+                {
+                    emotion: 'Crush', flavor: 'Mặn mà',
+                    name: 'Đào Muối Đập Tim',
+                    price: '29.000đ',
+                    desc: 'Mặn nhẹ, ngọt ngào, hậu vị độc lạ - đúng chất khác người!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Ngọt ngào',
+                    name: 'Dâu Mộng Mơ',
+                    price: '29.000đ',
+                    desc: 'Dâu béo thơm, ngọt dịu, "mộng mơ" thật sự!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Mát lạnh',
+                    name: 'Dưa Lưới Crush Băng Giá',
+                    price: '29.000đ',
+                    desc: 'Mát lạnh, dưa lưới thơm đậm rõ vị, hơi giòn nhai trân châu!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Cay gắt',
+                    name: 'Tắc Ớt Chanh Dây Chao Đảo',
+                    price: '29.000đ',
+                    desc: 'Chua mặn ngọt hòa quyện, đậm vị, khá tỉnh táo, dù không có ớt!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Chua nhẹ',
+                    name: 'Chanh Dâu Sủi Tim',
+                    price: '29.000đ',
+                    desc: 'Chua nhẹ ngọt thanh, sủi nhẹ - hiệu ứng vui tai!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Thanh mát',
+                    name: 'Hồng Đào Lá Bạc',
+                    price: '29.000đ',
+                    desc: 'Đào thơm hòa trà lài nhẹ nhàng, rất "thanh mát"!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Béo',
+                    name: 'Dâu Chese Không Rep',
+                    price: '29.000đ',
+                    desc: 'Rất béo - ngọt, chuẩn "seen không rep" vẫn mê!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Crush', flavor: 'Bất ngờ',
+                    name: 'Trái Tim Bật Nắp',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt mặn ngậy - hỗn hợp bùng nổ bất ngờ!',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Mặn mà',
+                    name: 'Cà Phê Muối Tỉnh Người',
+                    price: '29.000đ',
+                    desc: 'Mặn nhẹ - béo - đắng - đậm tỉnh táo - đá lạnh sảng khoái',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Ngọt ngào',
+                    name: 'Mãng Cầu Sữa Tươi Mềm Mại',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt nhẹ - béo thơm - mềm mịn thanh mát',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Mát lạnh',
+                    name: 'Me đá đen xay',
+                    price: '29.000đ',
+                    desc: 'Chua mát - ngọt nhẹ - sảng khoái - cực tỉnh',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Cay gắt',
+                    name: 'Mật Ong Tắc Gắt Gỏng',
+                    price: '29.000đ',
+                    desc: 'Chua - ngọt - mặn nhẹ - hậu vị xí muội me',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Chua nhẹ',
+                    name: 'Táo Chanh Bật Mood',
+                    price: '29.000đ',
+                    desc: 'Chua mát - tươi mới - sảng khoái tỉnh liền',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Thanh mát',
+                    name: 'Dưa Hấu Lá Xanh',
+                    price: '29.000đ',
+                    desc: 'Ngọt thanh - Mùi dưa hấu đặc trưng - trà mát dịu',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Mệt mỏi', flavor: 'Béo',
+                    name: 'Sữa Tươi Mãng Cầu Béo Tới Não',
+                    price: '29.000đ',
+                    desc: 'Ngọt béo đậm đà - chua thanh mãng cầu - mềm mịn quyến rũ',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },{
+                    emotion: 'Mệt mỏi', flavor: 'Bất ngờ',
+                    name: 'Bánh Tráng Phô Mai Latte',
+                    price: '29.000đ',
+                    desc: 'Đắng ngọt - béo - mặn nhẹ - giòn thơm - cảm giác "shock" lạ miệng rất Tiktok',
+                    img: 'https://img.freepik.com/free-photo/peach-iced-tea-glass_1150-11016.jpg?w=500'
+                },
+                {
+                    emotion: 'Tăng động', flavor: 'Mặn mà',
+                    name: 'Muối Chua Xoài Lắc Nước',
+                    price: '29.000đ',
+                    desc: 'Chua mặn ngọt đậm vị kích thích, đá lạnh sảng khoái, có xoài tươi giòn giòn',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },
+                {
+                    emotion: 'Tăng động', flavor: 'Ngọt ngào',
+                    name: 'Dâu Vải Marshmallow Nổ',
+                    price: '29.000đ',
+                    desc: 'Ngọt thơm, béo nhẹ, hậu vị thanh của vải - cực vui miệng',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Mát lạnh',
+                    name: 'Đào Tuyết',
+                    price: '29.000đ',
+                    desc: 'Thanh mát, thơm đào dịu nhẹ, đá xay mịn như tuyết',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Cay gắt',
+                    name: 'Chanh Dây Cay Xé Lưỡi',
+                    price: '29.000đ',
+                    desc: 'Chua nhẹ, vị mặn ngọt thanh mát - rất đã khát',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Chua nhẹ',
+                    name: 'Xí Muội Chanh Tắc Soda',
+                    price: '29.000đ',
+                    desc: 'Mặn ngọt chua hòa quyện, có hậu xí muội the the cực bắt miệng',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Thanh mát',
+                    name: 'Ổi Lá Bạc Hà',
+                    price: '29.000đ',
+                    desc: 'Thanh ngọt, thơm ổi, hơi the dịu nhẹ, rất "healthy"',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Béo',
+                    name: 'Kem Chese Bùng Nổ',
+                    price: '29.000đ',
+                    desc: 'Trà đạm hậu, béo mặn nhẹ từ kem chese - uống từng lớp rất bùng nổ',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },{
+                    emotion: 'Tăng động', flavor: 'Bất ngờ',
+                    name: 'Snack Tôm Lắc Dâu Cay',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt mặn đậm vị, cảm giác "giống snack" vì kết hợp vị lạ - uống vui miệng và bất ngờ',
+                    img: 'https://img.freepik.com/free-photo/ginger-tea-cup_1150-11018.jpg?w=500'
+                },
+                {
+                    emotion: 'Lạnh lùng', flavor: 'Mặn mà',
+                    name: 'Dưa Lưới Muối Hồng',
+                    price: '29.000đ',
+                    desc: 'Dưa mát lạnh, hậu mặn nhẹ kiểu "nụ cười nửa miệng", lạnh tanh mà quyến rũ',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Ngọt ngào',
+                    name: 'Mãng Cầu Sữa Ngọt Lịm',
+                    price: '29.000đ',
+                    desc: 'Ngọt sâu, thơm đặc, mát lạnh - như tình đầu "ngọt tới não, lạnh tới tim"',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Mát lạnh',
+                    name: 'Matcha Băng Lạnh',
+                    price: '29.000đ',
+                    desc: 'Đắng nhẹ lạnh sâu, không ngọt, béo - như ánh mắt "không cảm xúc"',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Cay gắt',
+                    name: 'Me Đen Ớt Đỏ',
+                    price: '29.000đ',
+                    desc: 'Chua mặn đậm đà, hậu vị chát nhẹ đầu môi, dễ "hờn cả thế giới"',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Chua nhẹ',
+                    name: 'Táo Xanh Soda',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt rất lạnh - như cái nhìn xa lạ của người từng thân',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Thanh mát',
+                    name: 'Cam Lá Bạc Hà',
+                    price: '29.000đ',
+                    desc: 'Cam chua the thanh mát(ít ngọt) - "gần bạc hà nhất trong thế giới không bạc hà"',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Béo',
+                    name: 'Kem Chese Lạnh Như Người Yêu Cũ',
+                    price: '29.000đ',
+                    desc: 'Ngọt béo mặn nhẹ - như một mối tình khó hiểu: "vừa yêu vừa rét run"',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },{
+                    emotion: 'Lạnh lùng', flavor: 'Bất ngờ',
+                    name: 'Kẹo Nổ Trái Cây Bất Thường',
+                    price: '29.000đ',
+                    desc: 'Bùng nổ đậm vị gắt - chua - ngọt - mùi hoa quả(dâu, việt quất), cảm giác như "kẹo nổ" trong miệng',
+                    img: 'https://img.freepik.com/free-photo/iced-black-coffee-glass_1150-11019.jpg?w=500'
+                },
+                {
+                    emotion: 'Chill', flavor: 'Mặn mà',
+                    name: 'Tắc Muối Soda',
+                    price: '29.000đ',
+                    desc: 'Mặn - chua - mát lạnh, đúng chất "chill"',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Chill', flavor: 'Ngọt ngào',
+                    name: 'Vải Ngâm Hoa Hồng',
+                    price: '29.000đ',
+                    desc: 'Ngọt thơm, nhẹ nhàng thanh mát chát nhẹ đầu môi, sang và dịu',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Mát lạnh',
+                    name: 'Trà Cam Atiso Đá Lạnh',
+                    price: '29.000đ',
+                    desc: 'Cam tươi kết hợp atiso mát lạnh - dịu ngọt - thanh nhẹ',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Cay gắt',
+                    name: 'Chanh Cay Vị Lạ',
+                    price: '29.000đ',
+                    desc: 'Chua - mặn - ngọt - lạ miệng',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Chua nhẹ',
+                    name: 'ổi Chanh Đá Xay',
+                    price: '29.000đ',
+                    desc: 'Mát - thanh - thơm ổi - hậu chua nhẹ(không có vị ngọt)',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Thanh mát',
+                    name: 'Dứa Lá Bạc Hà',
+                    price: '29.000đ',
+                    desc: 'Ngọt thanh, có hậu the the như bạc hà',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Béo',
+                    name: 'Kem Chese Dâu Thanh Nhẹ',
+                    price: '29.000đ',
+                    desc: 'Trà thanh - dâu thơm - kem nhẹ béo - hậu mặn nhẹ',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },{
+                    emotion: 'Chill', flavor: 'Bất ngờ',
+                    name: 'Kẹo Dẻo Mix Nước Quái',
+                    price: '29.000đ',
+                    desc: 'Nhiều lớp trái cây - ngọt ngào - lạ lẫm - vui miệng như kẹo',
+                    img: 'https://img.freepik.com/free-photo/bubble-milk-tea-with-tapioca-pearls_1150-11013.jpg?w=500'
+                },
+                {
+                    emotion: 'Nổi loạn', flavor: 'Mặn mà',
+                    name: 'Me Muối Xé Gió',
+                    price: '29.000đ',
+                    desc: 'Chua mặn gắt - cực "xé gió" đầu lưỡi, hậu ngọt thanh',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Ngọt ngào',
+                    name: 'Snack Tôm Ngọt Dị',
+                    price: '29.000đ',
+                    desc: 'Ngọt dị vị lạ - béo chua - thơm trái cây',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Mát lạnh',
+                    name: 'Bạc Hà Cực Lạnh Popping',
+                    price: '29.000đ',
+                    desc: 'Lạnh Buốt - thơm ngọt nhẹ - hậu chua mát - cực sảng khoái',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Cay gắt',
+                    name: 'Xoài Tắc Ớt Cắn Lưỡi',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt - vị gắt hơi thơm mùi dứa, rất "phá"',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Chua nhẹ',
+                    name: 'Chanh Dâu Cà Rốt Soda',
+                    price: '29.000đ',
+                    desc: 'Chua - ngọt nhẹ, thơm - hơi sủi nhẹ - màu cam đỏ bắt mắt - phá cách',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Thanh mát',
+                    name: 'Táo Đỏ Tắc Lá Bạc Hà',
+                    price: '29.000đ',
+                    desc: 'Mát - thanh - chua ngọt - hậu hơi the như bạc hà',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Béo',
+                    name: 'Sữa Béo Marshmallow Snack',
+                    price: '29.000đ',
+                    desc: 'Béo ngậy - ngọt nhẹ - thơm như snack sữa mềm',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },{
+                    emotion: 'Nổi loạn', flavor: 'Bất ngờ',
+                    name: 'Bánh Gạo Lắc Popping',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt dị - hậu vị me',
+                    img: 'https://img.freepik.com/free-photo/passion-fruit-soda_1150-11020.jpg?w=500'
+                },
+                {
+                    emotion: 'Buồn', flavor: 'Mặn mà',
+                    name: 'Cà Phê Muối Nặng Lòng',
+                    price: '29.000đ',
+                    desc: 'Đắng mặn - béo - trầm - đậm chất buồn',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Ngọt ngào',
+                    name: 'Dâu Sữa Kẹo Dẻo',
+                    price: '29.000đ',
+                    desc: 'Béo - ngọt - thơm dâu - nhẹ nhàng như kẹo mềm tan',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Mát Lạnh',
+                    name: 'Đào Lạnh Như Trái Tim',
+                    price: '29.000đ',
+                    desc: 'Lạnh buốt - ngọt dịu - thơm thanh - cảm xúc tê liệt',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Cay gắt',
+                    name: 'Tắc Xí Muội Gắt Nhẹ',
+                    price: '29.000đ',
+                    desc: 'Chua - mặn - ngọt - gắt nhẹ rất ghiền',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Chua nhẹ',
+                    name: 'Chanh Dây Soda Thanh Thoát',
+                    price: '29.000đ',
+                    desc: 'Chua - ngọt thanh - mát lạnh - cảm giác như buông bỏ',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Thanh mát',
+                    name: 'Táo Đỏ Lá Xanh',
+                    price: '29.000đ',
+                    desc: 'Thanh - ngọt - mùi lá - hơi chát dịu như cảm xúc âm u',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Béo',
+                    name: 'Kem Sữa Phô Mai Ngập Lòng',
+                    price: '29.000đ',
+                    desc: 'Béo - mặn nhẹ - thơm hồng đào - "nặng lòng" dễ nghiện',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Buồn', flavor: 'Bất ngờ',
+                    name: 'Kẹo Nổ Đào Dâu Tím',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt thơm gắt - bùng miệng - như "kẹo nổ"',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Mặn mà',
+                    name: 'Muối Lạc Vị Đào',
+                    price: '29.000đ',
+                    desc: 'Ngọt mặn nhẹ, hậu hơi the lạnh - tưởng như có chút muối mặn hòa vào đào',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },
+                {
+                    emotion: 'Hy vọng', flavor: 'Ngọt ngào',
+                    name: 'Dâu Dứa Vui Vẻ',
+                    price: '29.000đ',
+                    desc: 'Ngọt thanh, thơm dứa, chốt hậu là vị mật ong vui vẻ',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Mát lạnh',
+                    name: 'Xoài Đá Tuyết',
+                    price: '29.000đ',
+                    desc: 'Thơm đào - xoài ngọt nhẹ, đá lạnh sâu - uống vào mát lạnh toàn thân',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Cay gắt',
+                    name: 'Me Tắc Ớt Xanh',
+                    price: '29.000đ',
+                    desc: 'Chua gắt, hậu the nhẹ, giống cảm giác "ớt xanh chạm miệng"',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Chua nhẹ',
+                    name: 'Táo Chanh Lên Mood',
+                    price: '29.000đ',
+                    desc: 'Vị chua, hương chanh táo thanh mát - kích mood và tươi tỉnh',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Thanh mát',
+                    name: 'Ổi Lá Bạc Hà Thư Giãn',
+                    price: '29.000đ',
+                    desc: 'Thanh mát, nhẹ nhàng, hơi chua, hậu the lạnh nhẹ - như bạc hà mơ hồ',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Béo',
+                    name: 'Kem Chese Mãng Cầu Nhẹ',
+                    price: '29.000đ',
+                    desc: 'Ngọt dịu, thơm béo, thoảng chua nhẹ - giống kem chese nhưng nhẹ nhàng hơn',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Hy vọng', flavor: 'Bất ngờ',
+                    name: 'Kẹo Nổ Cam Xoài',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt, thơm nồng, hậu the nhẹ - cảm giác như viên kẹo bùng nổ trong miệng',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Mặn mà',
+                    name: 'Dâu Muối Lên Hương',
+                    price: '29.000đ',
+                    desc: 'Chua ngọt dịu, hậu mặn nhẹ - cảm giác "vị dâu lạ mà quen"',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Ngọt ngào',
+                    name: 'Đào Vải Marshmallow Bay Bổng',
+                    price: '29.000đ',
+                    desc: 'Ngọt thơm bay bổng - như vừa hít một giấc mơ trái cây',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Mát lạnh',
+                    name: 'Chanh Dây Bạc Hà Đá Xay',
+                    price: '29.000đ',
+                    desc: 'Chua lạnh - chát nhẹ - the ngầm - tươi tỉnh cực độ',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Cay gắt',
+                    name: 'Cà Rốt Ớt Gắt Nhẹ',
+                    price: '29.000đ',
+                    desc: 'Chua dịu, mặn nhẹ ngọt thanh - vị ngon khó tả',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Chua nhẹ',
+                    name: 'Ổi Chanh Tắc Bật Mood',
+                    price: '29.000đ',
+                    desc: 'Chua - chát - hơi the lạnh - ngọt nhẹ - kích mood ngay tức thì',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Thanh mát',
+                    name: 'Dưa Hấu Lá Bạc Chill',
+                    price: '29.000đ',
+                    desc: 'Ngọt thanh, mát lạnh, hậu mát mẻ của dưa hấu việt quất - chill như buổi sáng mưa',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Béo',
+                    name: 'Sữa Chese Ngập Tràn',
+                    price: '29.000đ',
+                    desc: 'Béo ngậy - hậu trà chát nhẹ - như một cái ôm mềm(béo từ sữa không quá ngọt)',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },{
+                    emotion: 'Lạc quan', flavor: 'Bất ngờ',
+                    name: 'Kẹo Gạo Nổ Mix Snack Lạ',
+                    price: '29.000đ',
+                    desc: 'Chua - ngọt - mặn nhẹ - có chút giòn vui miệng',
+                    img: 'https://img.freepik.com/free-photo/egg-cream-milk_1150-11021.jpg?w=500'
+                },
+            ];
+            function backToStep2() {
+                window.location.href = 'page2.html';
+            }
+            function goToStep5() {
+                // Lưu số lượng vào localStorage
+                const qty = Math.max(1, parseInt(document.getElementById('drink-qty').value) || 1);
+                localStorage.setItem('drinkQuantity', qty);
+                window.location.href = 'page4.html';
+            }
+            // Lấy dữ liệu cảm xúc và mùi vị từ localStorage
+            window.onload = function () {
+                const emotion = localStorage.getItem('selectedEmotion');
+                const flavor = localStorage.getItem('selectedFlavor');
+                if (!emotion) {
+                    window.location.href = 'index.html';
+                    return;
+                }
+                if (!flavor) {
+                    window.location.href = 'page2.html';
+                    return;
+                }
+                // Tìm món nước phù hợp
+                let suggestedDrink = drinks.find(d => d.emotion === emotion && d.flavor === flavor);
+                if (!suggestedDrink) {
+                    suggestedDrink = drinks[Math.floor(Math.random() * drinks.length)];
+                }
+                document.getElementById('drink-img').src = suggestedDrink.img;
+                document.getElementById('drink-name').innerText = suggestedDrink.name;
+                document.getElementById('drink-desc').innerText = suggestedDrink.desc;
+                document.getElementById('drink-price').innerText = suggestedDrink.price;
+                // Hiển thị các sản phẩm khác
+                const otherProducts = drinks.filter(d => d.name !== suggestedDrink.name);
+                document.getElementById('other-products-list').innerHTML = otherProducts.map((drink, idx) => `
+                    <div class='col-12 col-md-6 mb-3'>
+                        <div class='product-card'>
+                            <img src='${drink.img}' alt='${drink.name}' class='product-img'>
+                            <div class='product-name'>${drink.name}</div>
+                            <div class='product-price'>${drink.price}</div>
+                            <button class='btn btn-main mt-2' style='font-size:1rem;padding:0.3rem 1.1rem;border-radius:16px;' onclick='selectProduct(${JSON.stringify(drink)})'>Chọn</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            // Hàm chọn sản phẩm khác
+            function selectProduct(drink) {
+                // Hiển thị lên phần gợi ý chính
+                document.getElementById('drink-img').src = drink.img;
+                document.getElementById('drink-name').innerText = drink.name;
+                document.getElementById('drink-desc').innerText = drink.desc;
+                document.getElementById('drink-price').innerText = drink.price;
+                // Lưu vào localStorage để sang page6.html dùng
+                localStorage.setItem('selectedDrink', JSON.stringify(drink));
+            }
+        </script>
+    </div>
+</body>
+
+</html>

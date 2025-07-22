@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn topping - Menu Bán Nước Dễ Thương</title>
+    <link rel="icon" type="image/png" href="drink.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+            min-height: 100vh;
+            font-family: 'Quicksand', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .cute-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 36px;
+            box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18), 0 2px 8px #fff8fc;
+            padding: 2rem 1.2rem;
+            max-width: 420px;
+            margin: 2rem auto;
+            animation: fadeIn 0.7s;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .cute-card:hover {
+            box-shadow: 0 16px 48px 0 #ffb6d5, 0 2px 8px #fff8fc;
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .topping-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .topping-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 2px 12px rgba(255, 128, 171, 0.10);
+            padding: 1.1rem 1.3rem;
+            cursor: pointer;
+            border: 2.5px solid transparent;
+            transition: 0.18s;
+            min-width: 90px;
+            font-family: 'Quicksand', Arial, sans-serif;
+        }
+
+        .topping-card.selected {
+            border: 2.5px solid #ff80ab;
+            background: #ffe3f0;
+            box-shadow: 0 6px 18px rgba(255, 128, 171, 0.13);
+            transform: scale(1.07);
+        }
+
+        .topping-card:hover {
+            border: 2.5px solid #b2ebf2;
+            background: #f9e7fe;
+            box-shadow: 0 4px 16px rgba(178, 235, 242, 0.13);
+            transform: scale(1.04);
+        }
+
+        .topping-icon {
+            font-size: 2.1rem;
+            margin-bottom: 0.2rem;
+            filter: drop-shadow(0 2px 6px #ffb6d5);
+        }
+
+        .topping-name {
+            color: #ff80ab;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-main,
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            border-radius: 32px;
+            box-shadow: 0 2px 8px rgba(255, 128, 171, 0.10);
+            padding: 0.9rem 2.5rem;
+            min-width: 140px;
+            transition: 0.2s;
+            border: none;
+            outline: none;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
+            color: #fff;
+        }
+
+        .btn-main:hover,
+        .btn-main:focus {
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(255, 128, 171, 0.18);
+        }
+
+        .btn-back {
+            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
+            color: #fff;
+        }
+
+        .btn-back:hover,
+        .btn-back:focus {
+            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
+        }
+
+        @media (max-width: 600px) {
+            .cute-card {
+                padding: 1.2rem 0.3rem;
+                border-radius: 18px;
+                max-width: 98vw;
+            }
+
+            .topping-card {
+                min-width: 60px;
+                padding: 0.5rem 0.5rem;
+                border-radius: 12px;
+            }
+
+            .topping-icon {
+                font-size: 1.1rem;
+            }
+
+            .btn-main,
+            .btn-back {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+                border-radius: 16px;
+            }
+
+            .step-title {
+                font-size: 1.1rem !important;
+            }
+
+            img[alt="drink icon"] {
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-3">
+        <h1 class="text-center mb-4"
+            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
+                style="vertical-align:middle;margin-bottom:4px;">
+                <path
+                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
+                    fill="#ff80ab" />
+            </svg>
+            Menu Bán Nước Dễ Thương
+        </h1>
+    </div>
+    <div class="cute-card">
+        <div class="text-center mb-3">
+            <img src="drink.png" alt="drink icon"
+                style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffb6d5);margin-bottom:0.5rem;">
+        </div>
+        <div class="step-title text-center"
+            style="font-size:1.5rem;color:#ff80ab;font-weight:bold;letter-spacing:0.5px;">
+            Chọn topping bạn thích</div>
+        <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Thêm topping cho ly nước của bạn thêm hấp
+            dẫn!</div>
+        <div class="topping-list" id="topping-list"></div>
+        <div class="text-center mt-4 d-flex justify-content-center gap-3 flex-wrap">
+
+            <button class="btn btn-main d-flex align-items-center justify-content-center"
+                onclick="saveToppingsAndNext()">
+                Tiếp tục
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="margin-left:7px;">
+                    <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="btn-back d-flex align-items-center justify-content-center" onclick="goBackToStep3()">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="margin-right:7px;">
+                    <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Quay lại
+            </button>
+        </div>
+    </div>
+    <script>
+        const toppings = ['Trân châu', 'Thạch đào', 'Vải', 'Đào', 'Thạch dừa'];
+        const toppingIcons = {
+            'Trân châu': '⚫',
+            'Thạch đào': '🍑',
+            'Vải': '🍈',
+            'Đào': '🍑',
+            'Thạch dừa': '🥥'
+        };
+        let selectedToppings = [];
+        function renderToppingList() {
+            const toppingList = document.getElementById('topping-list');
+            toppingList.innerHTML = toppings.map(topping => `
+        <div class="topping-card${selectedToppings.includes(topping) ? ' selected' : ''}" onclick="toggleTopping('${topping}', this)">
+          <span class="topping-icon">${toppingIcons[topping] || '✨'}</span>
+          <span class="topping-name">${topping}</span>
+        </div>
+      `).join('');
+        }
+        function toggleTopping(topping, el) {
+            if (selectedToppings.includes(topping)) {
+                selectedToppings = selectedToppings.filter(t => t !== topping);
+                el.classList.remove('selected');
+            } else {
+                selectedToppings.push(topping);
+                el.classList.add('selected');
+            }
+            renderToppingList();
+        }
+        function saveToppingsAndNext() {
+            localStorage.setItem('selectedToppings', JSON.stringify(selectedToppings));
+            window.location.href = 'page5.html';
+        }
+        function goBackToStep3() {
+            window.location.href = 'page3.html';
+        }
+        renderToppingList();
+    </script>
+</body>
+
+</html>
