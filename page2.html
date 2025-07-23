@@ -138,29 +138,49 @@
             box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .cute-card {
-                padding: 1.2rem 0.3rem;
-                border-radius: 18px;
-                max-width: 98vw;
+                padding: 1.5rem 1rem;
+                border-radius: 24px;
+                max-width: 100%;
             }
 
             .flavor-btn {
-                font-size: 1rem;
-                padding: 0.6rem 1.1rem;
-                border-radius: 18px;
-                margin: 0.3rem;
-            }
-
-            .flavor-btn span {
-                font-size: 0.8rem;
+                font-size: 1.2rem;
+                padding: 0.8rem 1rem;
+                border-radius: 24px;
+                margin: 0.4rem;
+                width: calc(50% - 1rem);
             }
 
             .btn-main,
             .btn-back {
+                font-size: 1.05rem;
+                padding: 0.6rem 1.5rem;
+                border-radius: 18px;
+            }
+
+            .step-title {
+                font-size: 1.3rem !important;
+            }
+
+            img[alt="drink icon"] {
+                width: 64px !important;
+                height: 64px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flavor-btn {
                 font-size: 1rem;
-                padding: 0.5rem 1.2rem;
-                border-radius: 16px;
+                padding: 0.7rem 0.8rem;
+                width: 100%;
+            }
+
+            .btn-main,
+            .btn-back {
+                font-size: 0.95rem;
+                padding: 0.6rem 1.1rem;
             }
 
             .step-title {
@@ -177,70 +197,70 @@
 
 <body>
     <div class="container py-4">
-        <h1 class="text-center mb-4"
-            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24"
-                style="vertical-align:middle;margin-bottom:6px;">
-                <path
-                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
-                    fill="#ff80ab" />
+        <h1 class="text-center mb-4" style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            <svg width="40" height="40" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
+                <path d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z" fill="#ff80ab" />
             </svg>
             Menu Bán Nước Dễ Thương
         </h1>
+
         <div id="step-2" class="cute-card cute-bg">
             <div class="text-center mb-3">
-                <img src="drink.png" alt="drink icon"
-                    style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #b2ebf2);margin-bottom:0.5rem;">
+                <img src="drink.png" alt="drink icon" style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #b2ebf2);margin-bottom:0.5rem;">
             </div>
-            <div class="step-title text-center" style="font-size:1.5rem;color:#ff80ab;font-weight:bold;">Bạn muốn uống
-                vị gì?</div>
-            <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Chọn mùi vị bạn thích để quán chọn món
-                nước hợp gu cho bạn nhé!</div>
-            <div class="d-flex flex-wrap justify-content-center mb-3">
+            <div class="step-title text-center" style="font-size:1.5rem;">Bạn muốn uống vị gì?</div>
+            <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Chọn mùi vị bạn thích để quán chọn món nước hợp gu cho bạn nhé!</div>
+
+            <div class="flavor-grid flex-wrap justify-content-center mb-3">
                 <button class="flavor-btn" onclick="selectFlavor('Mặn mà', this)">🧂<span>Mặn mà-độc lạ</span></button>
                 <button class="flavor-btn" onclick="selectFlavor('Ngọt ngào', this)">🍬 <span>Ngọt ngào-dễ chịu</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Mát lạnh', this)">🧊<span>Mát lạnh sảng khoái </span></button>
+                <button class="flavor-btn" onclick="selectFlavor('Mát lạnh', this)">🧊<span>Mát lạnh sảng khoái</span></button>
                 <button class="flavor-btn" onclick="selectFlavor('Cay gắt', this)">🌶️<span>Cay-gắt-phá cách</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Chua nhẹ', this)">🍋<span>Chua nhẹ kích thích chua</span></button>
+                <button class="flavor-btn" onclick="selectFlavor('Chua nhẹ', this)">🍋<span>Chua nhẹ kích thích</span></button>
                 <button class="flavor-btn" onclick="selectFlavor('Thanh mát', this)">🍃<span>Thanh mát-healthy</span></button>
                 <button class="flavor-btn" onclick="selectFlavor('Béo', this)">🧀<span>Béo-creamy-no nê</span></button>
                 <button class="flavor-btn" onclick="selectFlavor('Bất ngờ', this)">🤯<span>Muốn bất ngờ</span></button>
             </div>
+
             <div class="text-center mt-4">
                 <button class="btn-back me-2" onclick="backToStep1()">Quay lại</button>
-                <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next" disabled>Tiếp tục <svg
-                        width="20" height="20" fill="none" viewBox="0 0 24 24">
-                        <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg></button>
+                <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next" disabled>
+                    Tiếp tục
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
         </div>
-        <script>
-            let selectedFlavor = '';
-            function selectFlavor(flavor, btn) {
-                selectedFlavor = flavor;
-                document.querySelectorAll('.flavor-btn').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                btn.classList.add('flavor-bounce');
-                setTimeout(() => btn.classList.remove('flavor-bounce'), 400);
-                document.getElementById('flavor-next').disabled = false;
-            }
-            function goToStep3() {
-                if (!selectedFlavor) return;
-                localStorage.setItem('selectedFlavor', selectedFlavor);
-                window.location.href = 'page3.html';
-            }
-            function backToStep1() {
+    </div>
+
+    <script>
+        let selectedFlavor = '';
+        function selectFlavor(flavor, btn) {
+            selectedFlavor = flavor;
+            document.querySelectorAll('.flavor-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected', 'flavor-bounce');
+            setTimeout(() => btn.classList.remove('flavor-bounce'), 400);
+            document.getElementById('flavor-next').disabled = false;
+        }
+
+        function goToStep3() {
+            if (!selectedFlavor) return;
+            localStorage.setItem('selectedFlavor', selectedFlavor);
+            window.location.href = 'page3.html';
+        }
+
+        function backToStep1() {
+            window.location.href = 'index.html';
+        }
+
+        // Nếu chưa chọn cảm xúc thì quay lại bước 1
+        window.onload = function () {
+            if (!localStorage.getItem('selectedEmotion')) {
                 window.location.href = 'index.html';
             }
-            // Kiểm tra nếu chưa chọn cảm xúc thì quay lại bước 1
-            window.onload = function () {
-                if (!localStorage.getItem('selectedEmotion')) {
-                    window.location.href = 'index.html';
-                }
-            }
-        </script>
-    </div>
+        }
+    </script>
 </body>
 
 </html>

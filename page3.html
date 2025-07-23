@@ -125,13 +125,13 @@
             border-radius: 18px;
             box-shadow: 0 2px 8px #ffb6d5;
             padding: 1rem 0.7rem 0.7rem 0.7rem;
-            min-height: 180px;
+            min-height: 190px;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: 0.18s;
             margin-bottom: 1.2rem;
-            height: 180px; 
+            height: 190px; 
             text-align: center;
         }
 
@@ -192,7 +192,12 @@
                 padding: 0.5rem 0.3rem 0.3rem 0.3rem;
                 min-height: 80px;
             }
-
+            .other-products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+            }
             .product-img {
                 width: 32px;
                 height: 32px;
@@ -212,11 +217,16 @@
                 height: 48px !important;
             }
         }
-        #other-products-list .product-card {
+        /* @media (max-width: 480px){
+            .other-products-grid{
+                grid-template-columns: 1fr;
+            }
+        } */
+        /* #other-products-list .product-card {
             flex: 1 1 200px;
             max-width: 240px; 
             box-sizing: border-box; 
-        }
+        } */
     </style>
 </head>
 
@@ -262,10 +272,10 @@
             <hr style="margin:2rem 0 1rem 0;opacity:0.3;">
             <div>
                 <div class="step-title" style="font-size:1.2rem;color:#ff80ab;">Các sản phẩm khác của quán</div>
-                <div class="row" id="other-products-list"></div>
+                <div class="other-products-grid" id="other-products-list"></div>
             </div>
         </div>
-        <script>
+        <script>    
             // Dữ liệu món nước mẫu (có thể mở rộng)
             const drinks = [
                 {
