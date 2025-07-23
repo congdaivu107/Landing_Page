@@ -1,172 +1,197 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu R-CORNER</title>
-    <link rel="icon" type="image/png" href="drink.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu R-CORNER</title>
+  <link rel="icon" type="image/png" href="drink.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet" />
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            font-family: 'Quicksand', Arial, sans-serif;
-            background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .cute-card {
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 30px;
-            box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18);
-            padding: 2rem;
-            max-width: 1000px;
-            margin: auto;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.7s;
-        }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Quicksand', Arial, sans-serif;
+      background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+    }
 
-        .emoji-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1rem;
-            justify-content: center;
-        }
+    .cute-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 30px;
+      box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18);
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.7s;
+    }
 
-        .emoji-btn {
-            background: linear-gradient(135deg, #ffe3f0 60%, #e0f7fa 100%);
-            border: none;
-            border-radius: 16px;
-            padding: 1rem;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #ff80ab;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(255, 128, 171, 0.1);
-            cursor: pointer;
-            transition: 0.2s;
-            height: 100%;
-            text-align: center;
-        }
+    .emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+      justify-content: center;
+    }
 
-        .emoji-btn span {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
+    .emoji-btn {
+      background: linear-gradient(135deg, #ffe3f0 60%, #e0f7fa 100%);
+      border: none;
+      border-radius: 22px;
+      padding: 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff80ab;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(255, 128, 171, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      height: 100%;
+      text-align: center;
+    }
 
-        .emoji-btn:hover,
-        .emoji-btn.selected {
-            background: linear-gradient(135deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(255, 128, 171, 0.3);
-        }
+    .emoji-btn span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+      /* font-family: 'Dancing Script', cursive; */
+    }
 
-        .step-title {
-            color: #ff80ab;
-            font-weight: bold;
-            font-size: 1.6rem;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
+    .emoji-btn:hover {
+      background: linear-gradient(135deg, #ffc1da, #c0f5f1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 128, 171, 0.2);
+    }
 
-        .btn-main {
-            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
-            color: #fff;
-            border: none;
-            font-weight: bold;
-            border-radius: 24px;
-            box-shadow: 0 2px 8px rgba(255, 128, 171, 0.1);
-            padding: 0.7rem 2rem;
-            font-size: 1.1rem;
-            transition: 0.2s;
-        }
+    .emoji-btn.selected {
+      background: linear-gradient(135deg, #ffb6d5 60%, #b2ebf2 100%);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(255, 128, 171, 0.3);
+      transform: scale(1.06) translateY(-4px);
+    }
 
-        .btn-main:disabled {
-            opacity: 0.6;
-            pointer-events: none;
-        }
+    .step-title {
+      color: #ff80ab;
+      font-weight: bold;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
 
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 128, 171, 0.25);
-        }
+    .btn-main {
+      background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      border-radius: 24px;
+      box-shadow: 0 2px 8px rgba(255, 128, 171, 0.1);
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      transition: 0.2s;
+    }
 
-        @media (max-width: 576px) {
-            .step-title {
-                font-size: 1.2rem;
-            }
+    .btn-main:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
 
-            .emoji-btn {
-                font-size: 1.3rem;
-            }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 128, 171, 0.25);
+    }
 
-            .emoji-btn span {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+    @keyframes flavor-bounce {
+      0%   { transform: scale(1) translateY(0); }
+      30%  { transform: scale(1.12) translateY(-8px); }
+      60%  { transform: scale(0.97) translateY(2px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+    
+    .flavor-bounce {
+      animation: flavor-bounce 0.4s;
+    }
+
+    @media (max-width: 576px) {
+      .step-title {
+        font-size: 1.2rem;
+      }
+
+      .emoji-btn {
+        font-size: 1.3rem;
+      }
+
+      .emoji-btn span {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container py-4">
-        <h1 class="text-center mb-4" style="color:#ff80ab;font-weight:bold;">
-            <svg width="36" height="36" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
-                <path d="M12 2C13.1 2 14 2.9 14 4v1.38c0 .38.21.73.55.89l4.9 2.45c.34.17.55.52.55.9V19c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V9.62c0-.38.21-.73.55-.89l4.9-2.45c.34-.17.55-.52.55-.9V4c0-1.1.9-2 2-2z" fill="#ff80ab"/>
-            </svg>
-            Menu R-CORNER
-        </h1>
+  <div class="container py-4">
+    <h1 class="text-center mb-4" style="color:#ff80ab;font-weight:bold;">
+      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
+        <path d="M12 2C13.1 2 14 2.9 14 4v1.38c0 .38.21.73.55.89l4.9 2.45c.34.17.55.52.55.9V19c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V9.62c0-.38.21-.73.55-.89l4.9-2.45c.34-.17.55-.52.55-.9V4c0-1.1.9-2 2-2z" fill="#ff80ab"/>
+      </svg>
+      Menu R-CORNER
+    </h1>
 
-        <div class="cute-card">
-            <div class="text-center">
-                <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #ffb6d5);">
-            </div>
-            <div class="step-title">Hôm nay bạn cảm thấy thế nào?</div>
-            <p class="text-center text-muted mb-3">Chọn cảm xúc của bạn để quán gợi ý món nước phù hợp nhé!</p>
+    <div class="cute-card">
+      <div class="text-center">
+        <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #ffb6d5);">
+      </div>
+      <div class="step-title">Hôm nay bạn cảm thấy thế nào?</div>
+      <p class="text-center text-muted mb-3">Chọn cảm xúc của bạn để R-CORNER gợi ý món nước phù hợp nhé!</p>
 
-            <div class="emoji-grid">
-                <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span>Crush chưa rep</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Mệt mỏi', this)">😩🛌<span>Mệt mỏi toàn tập</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Tăng động', this)">😝🔥<span>Tăng động quá đà</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Lạnh lùng', this)">😎🧊<span>Lạnh lùng hờ hững</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Chill', this)">😌🌿<span>Chill nhẹ nhàng</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Nổi loạn', this)">🔥🧨<span>Nổi loạn muốn phá</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Buồn', this)">😔💭<span>Buồn không lý do</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Hy vọng', this)">🐣☘️<span>Hy vọng nhẹ nhàng</span></button>
-                <button class="emoji-btn" onclick="selectEmotion('Lạc quan', this)">🍓🥰<span>Lạc quan vui vẻ</span></button>
-            </div>
+      <div class="emoji-grid flavor-bounce flex-wrap justify-content-center mb-3">
+        <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span>Crush chưa rep</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Mệt mỏi', this)">😩🛌<span>Mệt mỏi toàn tập</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Tăng động', this)">😝🔥<span>Tăng động quá đà</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Lạnh lùng', this)">😎🧊<span>Lạnh lùng hờ hững</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Chill', this)">😌🌿<span>Chill nhẹ nhàng</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Nổi loạn', this)">🔥🧨<span>Nổi loạn muốn phá</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Buồn', this)">😔💭<span>Buồn không lý do</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Hy vọng', this)">🐣☘️<span>Hy vọng nhẹ nhàng</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Lạc quan', this)">🍓🥰<span>Lạc quan vui vẻ</span></button>
+      </div>
 
-            <div class="text-center mt-4">
-                <button class="btn btn-main" onclick="goToStep2()" id="emotion-next" disabled>Tiếp tục ➤</button>
-            </div>
-        </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-main" onclick="goToStep2()" id="emotion-next" disabled>Tiếp tục ➤</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        let selectedEmotion = '';
+  <script>
+    let selectedEmotion = '';
 
-        function selectEmotion(emotion, btn) {
-            selectedEmotion = emotion;
-            document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            document.getElementById('emotion-next').disabled = false;
-        }
+    function selectEmotion(emotion, btn) {
+      selectedEmotion = emotion;
 
-        function goToStep2() {
-            if (!selectedEmotion) return;
-            localStorage.setItem('selectedEmotion', selectedEmotion);
-            window.location.href = 'page2.html';
-        }
-    </script>
+      document.querySelectorAll('.emoji-btn').forEach(b => {
+        b.classList.remove('selected', 'flavor-bounce');
+      });
+
+      btn.classList.add('selected', 'flavor-bounce');
+
+      setTimeout(() => btn.classList.remove('flavor-bounce'), 400);
+
+      document.getElementById('emotion-next').disabled = false;
+    }
+
+    function goToStep2() {
+      if (!selectedEmotion) return;
+      localStorage.setItem('selectedEmotion', selectedEmotion);
+      window.location.href = 'page2.html';
+    }
+  </script>
 </body>
 </html>
