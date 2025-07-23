@@ -217,9 +217,9 @@
     <img class="drink-img mx-auto mb-3" src="${drink.img}" alt="Ly nước">
     <h4 style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;font-size:1.25rem;margin-bottom:0.5rem;">${drink.name}</h4>
     <div class="fw-bold mb-1" style="color:#ff7043;font-size:1.1rem;">${drink.price}</div>
-    <div class="mb-2" style="font-size:1.05rem;"><strong style="color:#888;">Số lượng:</strong> <span style="color:#ff0055;font-weight:600;">${quantity}</span></div>
+    <div class="mb-2" style="font-size:1.05rem;"><strong style="color:black;">Số lượng:</strong> <span style="color:#ff0055;font-weight:600;">${quantity}</span></div>
     <div class="mb-2">
-        <strong style="color:#888;font-size:1rem;">Topping bạn chọn:</strong>
+        <strong style="color:black;font-size:1rem;">Topping bạn chọn:</strong>
         <div class="d-flex flex-column align-items-center gap-1 mt-1">
             ${
                 toppings.length > 0
@@ -233,9 +233,9 @@
         </div>
     </div>
     
-    <div id="total-price" style="font-size: 18px; font-weight: bold; margin-top: 20px;">
+    <div id="total-price" style="font-size: 18px; font-weight: bold; margin-top: 20px; color:black;"">
     💰 Tổng cộng: 
-    <span style="color:#ff7043;">
+    <span style="color:black;">
         ${(
             (parseInt(drink.price.replace(/[^\d]/g, '')) || 0) * quantity +
             totalToppingPrice * quantity
