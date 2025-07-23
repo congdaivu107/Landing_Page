@@ -85,7 +85,7 @@
 
         .btn-main {
             background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #000000;
             border: none;
             margin-bottom: 1rem;
         }
@@ -93,22 +93,22 @@
         .btn-main:hover,
         .btn-main:focus {
             background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #000000;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px rgba(255, 128, 171, 0.18);
         }
 
         .btn-back {
-            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
+            color: #000000;
             border: none;
             outline: none;
         }
 
         .btn-back:hover,
         .btn-back:focus {
-            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #000000;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
         }
@@ -122,7 +122,7 @@
         }
 
         .step-title {
-            color: #ff80ab;
+            color: #ff0156;
             font-weight: bold;
             font-size: 1.5rem;
             margin-bottom: 1.2rem;
@@ -153,7 +153,7 @@
 <body>
     <div class="container py-3">
         <h1 class="text-center mb-4"
-            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            style="color:#f80053;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
                 style="vertical-align:middle;margin-bottom:4px;">
                 <path
@@ -169,7 +169,7 @@
                 style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffd54f);margin-bottom:0.5rem;">
         </div>
         <div class="step-title text-center">Vòng quay may mắn - Quay để nhận topping tặng thêm!</div>
-        <div class="mb-4 text-center" style="color:#888;font-size:1.05rem;">Chúc bạn may mắn nhận được topping hấp dẫn
+        <div class="mb-4 text-center" style="color:#eb0000;font-size:1.05rem;">Chúc bạn may mắn nhận được topping hấp dẫn
             từ R-CORNER nhé!</div>
         <div class="lucky-wheel" id="lucky-wheel"
             style="background:none;box-shadow:none;border:none;position:relative;width:220px;height:220px;">
@@ -191,8 +191,8 @@
         <div class="text-center mt-4">
             <button class="btn-main px-4" onclick="spinWheel()" id="spin-btn">Quay ngay <svg width="20" height="20"
                     fill="none" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="2" />
-                    <path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                    <circle cx="12" cy="12" r="10" stroke="#000000" stroke-width="2" />
+                    <path d="M12 6v6l4 2" stroke="#000000" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg></button>
         </div>
@@ -231,12 +231,12 @@
                 const x2 = center + radius * Math.cos(endAngle);
                 const y2 = center + radius * Math.sin(endAngle);
                 const largeArc = sliceAngle > Math.PI ? 1 : 0;
-                svg += `<path d='M${center},${center} L${x1},${y1} A${radius},${radius} 0 0,1 ${x2},${y2} Z' fill='${toppingColors[i]}' stroke='#ffb74d' stroke-width='3'/>`;
+                svg += `<path d='M${center},${center} L${x1},${y1} A${radius},${radius} 0 0,1 ${x2},${y2} Z' fill='${toppingColors[i]}' stroke='#f80053' stroke-width='3'/>`;
                 // Tên topping
                 const textAngle = startAngle + sliceAngle / 2;
                 const tx = center + 95 * Math.cos(textAngle);
                 const ty = center + 95 * Math.sin(textAngle) + 10;
-                svg += `<text x='${tx}' y='${ty}' text-anchor='middle' font-size='1.1rem' font-family='Quicksand,Arial,sans-serif' fill='#ff80ab' font-weight='700'>${toppings[i]}</text>`;
+                svg += `<text x='${tx}' y='${ty}' text-anchor='middle' font-size='1.1rem' font-family='Quicksand,Arial,sans-serif' fill='#f80053' font-weight='700'>${toppings[i]}</text>`;
             }
             document.getElementById('wheel-slices').innerHTML = svg;
         }

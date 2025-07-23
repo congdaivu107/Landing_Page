@@ -41,8 +41,8 @@
         }
 
         .btn-main {
-            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #eaa5bc 0%, #b2ebf2 100%);
+            color: #141313;
             border: none;
             font-weight: 700;
             border-radius: 24px;
@@ -55,9 +55,9 @@
         .btn-main:hover,
         .btn-main:focus {
             background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #080808;
             transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 4px 16px #ffb6d5, 0 2px 8px #fff8fc;
+            box-shadow: 0 4px 16px #f598b7, 0 2px 8px #fff8fc;
         }
 
         .btn-back {
@@ -66,8 +66,8 @@
             border-radius: 24px;
             font-weight: 700;
             min-width: 120px;
-            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+            color: #060606;
             border: none;
             box-shadow: 0 2px 8px rgba(178, 190, 195, 0.10);
             transition: 0.2s;
@@ -77,16 +77,16 @@
 
         .btn-back:hover,
         .btn-back:focus {
-            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #030303;
             transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
+            box-shadow: 0 4px 16px rgba(227, 193, 58, 0.18);
         }
 
         .drink-info-card {
             background: rgba(255, 255, 255, 0.97);
             border-radius: 28px;
-            box-shadow: 0 2px 16px #ffb6d5;
+            box-shadow: 0 2px 16px #ff3478;
             padding: 1.2rem 1rem;
             margin-bottom: 1rem;
             text-align: center;
@@ -94,12 +94,12 @@
         }
 
         .drink-info-card:hover {
-            box-shadow: 0 8px 32px #ffb6d5;
+            box-shadow: 0 8px 32px #eb80a3;
             transform: scale(1.03);
         }
 
         .drink-info-card h4 {
-            color: #ff80ab;
+            color: #ff0055;
             font-weight: bold;
             margin-top: 0.7rem;
         }
@@ -136,7 +136,7 @@
         }
 
         .product-card:hover {
-            box-shadow: 0 8px 24px #ffb6d5;
+            box-shadow: 0 8px 24px #fe71a0;
             transform: scale(1.04);
         }
 
@@ -150,7 +150,7 @@
 
         .product-name {
             font-weight: 700;
-            color: #ff80ab;
+            color: #ff0055;
             font-size: 1.05rem;
             text-align: center;
         }
@@ -233,12 +233,12 @@
 <body>
     <div class="container py-4">
         <h1 class="text-center mb-4"
-            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
             <svg width="40" height="40" fill="none" viewBox="0 0 24 24"
                 style="vertical-align:middle;margin-bottom:6px;">
                 <path
                     d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
-                    fill="#ff80ab" />
+                    fill="#ff0055" />
             </svg>
             Menu R-CORNER
         </h1>
@@ -247,30 +247,30 @@
                 <img src="drink.png" alt="drink icon"
                     style="width:130px;height:130px;filter:drop-shadow(0 4px 12px #ffb6d5);">
             </div>
-            <div class=" text-center" style="color:#ff80ab;font-size:2.5rem;">Tada~</div>
-            <div class=" mb-2 text-center" style="color:#ff80ab; font-size:1.5rem;">Gợi ý món nước dành riêng cho vibe của bạn nè!</div>
+            <div class=" text-center" style="color:#ff0055;font-size:2.5rem;">Tada~</div>
+            <div class=" mb-2 text-center" style="color:#ff0055; font-size:1.5rem;">Gợi ý món nước dành riêng cho vibe của bạn nè!</div>
             <div class="drink-info-card animate__animated animate__fadeInDown">
                 <img id="drink-img" class="drink-img" src="" alt="Ly nước">
                 <h4 id="drink-name"></h4>
                 <p id="drink-desc"></p>
                 <div id="drink-price" class="fw-bold mb-2"></div>
                 <div class="mb-2 d-flex align-items-center justify-content-center" style="gap:0.5rem;">
-                    <label for="drink-qty" style="margin-bottom:0;font-weight:600;color:#ff80ab;">Số lượng:</label>
+                    <label for="drink-qty" style="margin-bottom:0;font-weight:600;color:#ff0055;">Số lượng:</label>
                     <input id="drink-qty" type="number" min="1" value="1"
-                        style="width:60px;border-radius:8px;border:1.5px solid #ffb6d5;padding:2px 8px;font-size:1.1rem;text-align:center;outline:none;" />
+                        style="width:60px;border-radius:8px;border:1.5px solid #ff0055;padding:2px 8px;font-size:1.1rem;text-align:center;outline:none;" />
                 </div>
             </div>
             <div class="text-center mt-4 mb-2">
                 <button class="btn-back me-2" onclick="backToStep2()">Quay lại</button>
                 <button class="btn btn-main px-4" onclick="goToStep5()">Tiếp tục <svg width='20' height='20' fill='none'
                         viewBox='0 0 24 24'>
-                        <path d='M9 18l6-6-6-6' stroke='#fff' stroke-width='2' stroke-linecap='round'
-                            stroke-linejoin='round' />
+                        <path d="M9 18l6-6-6-6" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
                     </svg></button>
             </div>
             <hr style="margin:2rem 0 1rem 0;opacity:0.3;">
             <div>
-                <div class="step-title" style="font-size:1.2rem;color:#ff80ab;">Thích đổi vị? Mình còn tận 72 vị khác chờ bạn thử á!</div>
+                <div class="step-title" style="font-size:1.2rem;color:#ff0055;">Thích đổi vị? Mình còn tận 72 vị khác chờ bạn thử á!</div>
                 <div class="other-products-grid" id="other-products-list"></div>
             </div>
         </div>

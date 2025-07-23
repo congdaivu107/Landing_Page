@@ -76,7 +76,7 @@
     }
 
     .step-title {
-      color: #ff80ab;
+      color: #ff0055;
       font-weight: bold;
       font-size: 1.6rem;
       text-align: center;
@@ -85,11 +85,11 @@
 
     .btn-main {
       background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
-      color: #fff;
+      color: #121111;
       border: none;
       font-weight: 700;
       border-radius: 24px;
-      box-shadow: 0 2px 8px rgba(255, 128, 171, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 0.7rem 2.2rem;
       font-size: 1.2rem;
       transition: 0.2s;
@@ -102,7 +102,7 @@
 
     .btn-main:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 128, 171, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     @keyframes flavor-bounce {
@@ -151,7 +151,7 @@
 
 <body>
   <div class="container py-4">
-    <h1 class="text-center mb-4" style="color:#ff80ab;font-weight:bold;">
+    <h1 class="text-center mb-4" style="color:#ff0055;font-weight:bold;">
       <svg width="36" height="36" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
         <path d="M12 2C13.1 2 14 2.9 14 4v1.38c0 .38.21.73.55.89l4.9 2.45c.34.17.55.52.55.9V19c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V9.62c0-.38.21-.73.55-.89l4.9-2.45c.34-.17.55-.52.55-.9V4c0-1.1.9-2 2-2z" fill="#ff80ab"/>
       </svg>
@@ -163,7 +163,7 @@
         <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #ffb6d5);">
       </div>
       <div class="step-title">Hôm nay bạn cảm thấy thế nào?</div>
-      <p class="text-center text-muted mb-3">Chọn cảm xúc của bạn để R-CORNER gợi ý món nước phù hợp nhé!</p>
+      <p class="text-center mb-3">Chọn cảm xúc của bạn để R-CORNER gợi ý món nước phù hợp nhé!</p>
 
       <div class="emoji-grid flavor-bounce flex-wrap justify-content-center mb-3">
         <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span>Crush chưa rep</span></button>
@@ -178,7 +178,7 @@
       </div>
 
       <div class="text-center mt-4">
-        <button class="btn btn-main" onclick="goToStep2()" id="emotion-next" disabled>Tiếp tục ➤</button>
+        <button class="btn btn-main" onclick="goToStep2()" id="emotion-next" >Tiếp tục ➤</button>
       </div>
     </div>
   </div>

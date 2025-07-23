@@ -93,7 +93,7 @@
 
         .btn-main {
             background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
-            color: #fff;
+            color: #040404;
             border: none;
             font-weight: 700;
             border-radius: 24px;
@@ -110,7 +110,7 @@
         .btn-main:hover,
         .btn-main:focus {
             background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #000000;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px #ffb6d5, 0 2px 8px #fff8fc;
         }
@@ -121,10 +121,10 @@
             border-radius: 24px;
             font-weight: 700;
             min-width: 120px;
-            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+            color: #040404;
             border: none;
-            box-shadow: 0 2px 8px rgba(178, 190, 195, 0.10);
+            box-shadow: 0 2px 8px rgba(117, 23, 69, 0.1);
             transition: 0.2s;
             margin-right: 0.5rem;
             outline: none;
@@ -132,8 +132,8 @@
 
         .btn-back:hover,
         .btn-back:focus {
-            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
+            color: #090909;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
         }
@@ -197,7 +197,7 @@
 
 <body>
     <div class="container py-4">
-        <h1 class="text-center mb-4" style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+        <h1 class="text-center mb-4" style="color:#fe0457;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
             <svg width="40" height="40" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
                 <path d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z" fill="#ff80ab" />
             </svg>
@@ -224,10 +224,10 @@
 
             <div class="text-center mt-4">
                 <button class="btn-back me-2" onclick="backToStep1()">Quay lại</button>
-                <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next" disabled>
+                <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next" >
                     Tiếp tục
                     <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                        <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9 18l6-6-6-6" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
             </div>

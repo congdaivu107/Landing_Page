@@ -88,7 +88,7 @@
         }
 
         .topping-name {
-            color: #ff80ab;
+            color: #f80556;
             font-weight: 700;
             font-size: 1.05rem;
             letter-spacing: 0.2px;
@@ -114,26 +114,26 @@
 
         .btn-main {
             background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #000000;
         }
 
         .btn-main:hover,
         .btn-main:focus {
             background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
+            color: #000000;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px rgba(255, 128, 171, 0.18);
         }
 
         .btn-back {
-            background: linear-gradient(90deg, #b2bec3 60%, #dfe6e9 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ff80ab 60%, #b2ebf2 100%);
+            color: #000000;
         }
 
         .btn-back:hover,
         .btn-back:focus {
-            background: linear-gradient(90deg, #636e72 60%, #b2bec3 100%);
-            color: #fff;
+            background: linear-gradient(90deg, #ffb6d5 60%, #b2ebf2 100%);
+            color: #000000;
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 4px 16px rgba(178, 190, 195, 0.18);
         }
@@ -177,7 +177,7 @@
 <body>
     <div class="container py-3">
         <h1 class="text-center mb-4"
-            style="color:#ff80ab;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+            style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
                 style="vertical-align:middle;margin-bottom:4px;">
                 <path
@@ -193,15 +193,15 @@
                 style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #ffb6d5);">
         </div>
         <div class=" text-center"
-            style="font-size:1.5rem;color:#ff80ab;font-weight:bold;letter-spacing:0.5px;">
+            style="font-size:1.5rem;color:#ff0055;font-weight:bold;letter-spacing:0.5px;">
             Chọn topping bạn thích</div>
-        <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Thêm topping cho ly nước của bạn thêm hấp
+        <div class="mb-2 text-center" style="color:#d63939;font-size:1.05rem;">Thêm topping cho ly nước của bạn thêm hấp
             dẫn!</div>
         <div class="topping-list" id="topping-list"></div>
         <div class="text-center mt-4 d-flex justify-content-center gap-3 flex-wrap">
             <button class="btn-back d-flex align-items-center justify-content-center" onclick="goBackToStep3()">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="margin-right:7px;">
-                    <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
                 Quay lại
@@ -210,7 +210,7 @@
                 onclick="saveToppingsAndNext()">
                 Tiếp tục
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="margin-left:7px;">
-                    <path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+                    <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
             </button>
@@ -229,28 +229,53 @@
     const TOPPING_PRICE = 5000;
 
     let selectedToppings = [];
-    
-    function renderToppingList() {
-        const toppingList = document.getElementById('topping-list');
-        toppingList.innerHTML = toppings.map(topping => `
-            <div class="topping-card${selectedToppings.includes(topping) ? ' selected' : ''}" onclick="toggleTopping('${topping}')">
-                <span class="topping-icon">${toppingIcons[topping] || '✨'}</span>
-                <span class="topping-name">${topping} (+${TOPPING_PRICE.toLocaleString()}đ)</span>
-            </div>
-        `).join('');
+
+    function createToppingCard(topping) {
+        const div = document.createElement('div');
+        div.className = 'topping-card';
+        div.setAttribute('data-name', topping);
+
+        const icon = document.createElement('span');
+        icon.className = 'topping-icon';
+        icon.textContent = toppingIcons[topping] || '✨';
+
+        const name = document.createElement('span');
+        name.className = 'topping-name';
+        name.textContent = `${topping} (+${TOPPING_PRICE.toLocaleString()}đ)`;
+
+        div.appendChild(icon);
+        div.appendChild(name);
+
+        div.addEventListener('click', () => toggleTopping(topping, div));
+
+        return div;
     }
 
-    function toggleTopping(topping) {
-        if (selectedToppings.includes(topping)) {
-            selectedToppings = selectedToppings.filter(t => t !== topping);
+    function renderToppingList() {
+        const toppingList = document.getElementById('topping-list');
+        toppingList.innerHTML = '';
+
+        toppings.forEach(topping => {
+            const card = createToppingCard(topping);
+            if (selectedToppings.includes(topping)) {
+                card.classList.add('selected');
+            }
+            toppingList.appendChild(card);
+        });
+    }
+
+    function toggleTopping(topping, element) {
+        const index = selectedToppings.indexOf(topping);
+        if (index > -1) {
+            selectedToppings.splice(index, 1);
+            element.classList.remove('selected');
         } else {
             selectedToppings.push(topping);
+            element.classList.add('selected');
         }
-        renderToppingList(); // Rerender để cập nhật giao diện
     }
 
     function saveToppingsAndNext() {
-        // Cho phép không chọn topping
         localStorage.setItem('selectedToppings', JSON.stringify(selectedToppings));
         window.location.href = 'page5.html';
     }
@@ -259,9 +284,9 @@
         window.location.href = 'page3.html';
     }
 
-    // Khởi tạo danh sách topping
     renderToppingList();
 </script>
+
 
 </body>
 
