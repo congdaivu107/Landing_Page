@@ -763,6 +763,8 @@
                 document.getElementById('drink-name').innerText = suggestedDrink.name;
                 document.getElementById('drink-desc').innerText = suggestedDrink.desc;
                 document.getElementById('drink-price').innerText = suggestedDrink.price;
+                
+                localStorage.setItem('selectedDrink', JSON.stringify(suggestedDrink));
                 // Hiển thị các sản phẩm khác
                 const otherProducts = drinks.filter(d => d.name !== suggestedDrink.name);
                 document.getElementById('other-products-list').innerHTML = otherProducts.map((drink, idx) => `
