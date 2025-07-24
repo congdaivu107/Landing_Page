@@ -262,7 +262,14 @@
             setTimeout(() => {
                 const luckyTopping = toppings[luckyIdx];
                 document.getElementById('wheel-label').innerHTML = `<span style='font-size:1.5rem;'>${toppingIcons[luckyTopping] || '✨'} </span>`;
-                document.getElementById('lucky-result').innerHTML = `🎉 <span style='color:#ff80ab;font-size:1.2rem;font-weight:bold;'>Chúc mừng bạn nhận được topping: ${toppingIcons[luckyTopping] || '✨'} <b style="color:#ff0156;">${luckyTopping}</b></span>`;
+document.getElementById('lucky-result').innerHTML = `
+    🎉 <span style="color:#ff80ab;font-size:1.2rem;font-weight:bold;">
+        Chúc mừng bạn nhận được topping: 
+        <span style="color:#ff0156; display: inline-flex; align-items: center; gap: 4px;">
+            ${toppingIcons[luckyTopping] || '✨'} <b style="margin:0;">${luckyTopping}</b>
+        </span>
+    </span>
+`;
                 showConfetti();
                 setTimeout(() => {
                     spinning = false;
