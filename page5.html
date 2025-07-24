@@ -172,17 +172,20 @@
         <div class="mb-4 text-center" style="color:#eb0000;font-size:1.05rem;">Chúc bạn may mắn nhận được topping hấp dẫn
             từ R-CORNER nhé!</div>
         <div class="lucky-wheel" id="lucky-wheel"
-            style="background:none;box-shadow:none;border:none;position:relative;width:220px;height:220px;">
+    style="background:none;box-shadow:none;border:none;position:relative;width:320px;height:320px;">
+
             <svg id="wheel-svg" width="320" height="320" viewBox="0 0 320 320" style="display:block;margin:0 auto;">
                 <g id="wheel-slices">
                     <!-- Các lát sẽ được vẽ bằng JS -->
                 </g>
             </svg>
             <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);z-index:2;">
-                <svg width="36" height="28" viewBox="0 0 36 28">
-                    <polygon points="18,0 36,28 0,28" fill="#ff7043" stroke="#fff" stroke-width="2" />
-                </svg>
-            </div>
+    <svg width="36" height="28" viewBox="0 0 36 28">
+        <polygon points="0,0 36,0 18,28" fill="#ff7043" stroke="#fff" stroke-width="2" />
+    </svg>
+</div>
+
+
             <div id="wheel-label"
                 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.2rem;font-weight:bold;color:#ff7043;pointer-events:none;z-index:1;">
             </div>
@@ -259,7 +262,7 @@
             setTimeout(() => {
                 const luckyTopping = toppings[luckyIdx];
                 document.getElementById('wheel-label').innerHTML = `<span style='font-size:1.5rem;'>${toppingIcons[luckyTopping] || '✨'} </span>`;
-                document.getElementById('lucky-result').innerHTML = `🎉 <span style='color:#ff80ab;font-size:1.2rem;font-weight:bold;'>Chúc mừng bạn nhận được topping: ${toppingIcons[luckyTopping] || '✨'} <b>${luckyTopping}</b></span>`;
+                document.getElementById('lucky-result').innerHTML = `🎉 <span style='color:#ff80ab;font-size:1.2rem;font-weight:bold;'>Chúc mừng bạn nhận được topping: ${toppingIcons[luckyTopping] || '✨'} <b style="color:#ff0156;">${luckyTopping}</b></span>`;
                 showConfetti();
                 setTimeout(() => {
                     spinning = false;
