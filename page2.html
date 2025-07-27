@@ -192,47 +192,77 @@
                 height: 78px !important;
             }
         }
+        .lang-btn {
+  background: #fff;
+  border: 2px solid #ff80ab;
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.lang-btn:hover {
+  background-color: #ffb6d5;
+  color: white;
+  transform: scale(1.05);
+}
+.lang-btn.active {
+  background-color: #ff80ab;
+  color: white;
+}
+
     </style>
 </head>
 
 <body>
     <div class="container py-4">
-        <h1 class="text-center mb-4" style="color:#fe0457;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
-            <svg width="40" height="40" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
-                <path d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z" fill="#ff80ab" />
-            </svg>
-            Menu R-CORNER
-        </h1>
+        <div class="d-flex justify-content-end mb-3">
+  <button id="btn-lang-vi" class="lang-btn" onclick="setLanguage('vi')">🇻🇳</button>
+  <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">🇺🇸</button>
+</div>
 
-        <div id="step-2" class="cute-card cute-bg">
-            <div class="text-center">
-                <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #b2ebf2);">
-            </div>
-            <div class="step-title text-center" style="font-size:1.5rem;">Bạn muốn uống vị gì?</div>
-            <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;">Chọn mùi vị bạn thích để R-CORNER chọn món nước hợp gu cho bạn nhé!</div>
+<h1 class="text-center mb-4" style="color:#fe0457;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+  <svg width="40" height="40" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
+    <path d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z" fill="#ff80ab" />
+  </svg>
+  <span data-i18n="menuTitle">Menu R-CORNER</span>
+</h1>
 
-            <div class="flavor-grid flex-wrap justify-content-center mb-3">
-                <button class="flavor-btn" onclick="selectFlavor('Mặn mà', this)">🧂<span>Mặn mà-độc lạ</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Ngọt ngào', this)">🍬 <span>Ngọt ngào-dễ chịu</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Mát lạnh', this)">🧊<span>Mát lạnh sảng khoái</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Cay gắt', this)">🌶️<span>Cay-gắt-phá cách</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Chua nhẹ', this)">🍋<span>Chua nhẹ kích thích</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Thanh mát', this)">🍃<span>Thanh mát-healthy</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Béo', this)">🧀<span>Béo-creamy-no nê</span></button>
-                <button class="flavor-btn" onclick="selectFlavor('Bất ngờ', this)">🤯<span>Muốn bất ngờ</span></button>
-            </div>
+<div id="step-2" class="cute-card cute-bg">
+  <div class="text-center">
+    <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #b2ebf2);">
+  </div>
 
-            <div class="text-center mt-4">
-                <button class="btn-back me-2" onclick="backToStep1()">Quay lại</button>
-                <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next" >
-                    Tiếp tục
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-                        <path d="M9 18l6-6-6-6" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+  <div class="step-title text-center" style="font-size:1.5rem;" data-i18n="title">Bạn muốn uống vị gì?</div>
+  <div class="mb-2 text-center" style="color:#888;font-size:1.05rem;" data-i18n="subtitle">
+    Chọn mùi vị bạn thích để R-CORNER chọn món nước hợp gu cho bạn nhé!
+  </div>
+
+  <div class="flavor-grid flex-wrap justify-content-center mb-3">
+    <button class="flavor-btn" onclick="selectFlavor('Mặn mà', this)">🧂 <span data-i18n="flavor_salty">Mặn mà-độc lạ</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Ngọt ngào', this)">🍬 <span data-i18n="flavor_sweet">Ngọt ngào-dễ chịu</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Mát lạnh', this)">🧊 <span data-i18n="flavor_cool">Mát lạnh sảng khoái</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Cay gắt', this)">🌶️ <span data-i18n="flavor_spicy">Cay-gắt-phá cách</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Chua nhẹ', this)">🍋 <span data-i18n="flavor_sour">Chua nhẹ kích thích</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Thanh mát', this)">🍃 <span data-i18n="flavor_fresh">Thanh mát-healthy</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Béo', this)">🧀 <span data-i18n="flavor_creamy">Béo-creamy-no nê</span></button>
+    <button class="flavor-btn" onclick="selectFlavor('Bất ngờ', this)">🤯 <span data-i18n="flavor_surprise">Muốn bất ngờ</span></button>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn-back me-2" onclick="backToStep1()" data-i18n="back">Quay lại</button>
+    <button class="btn btn-main px-4" onclick="goToStep3()" id="flavor-next">
+      <span data-i18n="next">Tiếp tục</span>
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+        <path d="M9 18l6-6-6-6" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+</div>
+
 
     <script>
         let selectedFlavor = '';
@@ -260,6 +290,59 @@
                 window.location.href = 'index.html';
             }
         }
+        
+  let translationsData = {};
+
+  function selectFlavor(flavor, btn) {
+    selectedFlavor = flavor;
+    document.querySelectorAll('.flavor-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected', 'flavor-bounce');
+    setTimeout(() => btn.classList.remove('flavor-bounce'), 400);
+    document.getElementById('flavor-next').disabled = false;
+  }
+
+  function goToStep3() {
+    if (!selectedFlavor) return;
+    localStorage.setItem('selectedFlavor', selectedFlavor);
+    window.location.href = 'page3.html';
+  }
+
+  function backToStep1() {
+    window.location.href = 'index.html';
+  }
+
+  async function loadLanguage(lang) {
+    if (Object.keys(translationsData).length === 0) {
+      const res = await fetch('lang.json');
+      translationsData = await res.json();
+    }
+
+    const translations = translationsData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`btn-lang-${lang}`).classList.add('active');
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    loadLanguage(lang);
+  }
+
+  window.onload = async function () {
+    if (!localStorage.getItem('selectedEmotion')) {
+      window.location.href = 'index.html';
+    }
+    const savedLang = localStorage.getItem('language') || 'vi';
+    await setLanguage(savedLang);
+  }
+
+
     </script>
 </body>
 

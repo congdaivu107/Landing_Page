@@ -3,200 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Menu R-CORNER</title>
+  <title data-i18n="menuTitle">Menu R-CORNER</title>
   <link rel="icon" type="image/png" href="drink.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet" />
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh;
+    body {
       font-family: 'Quicksand', Arial, sans-serif;
       background: linear-gradient(135deg, #f9e7fe 0%, #ffe3e3 50%, #e0f7fa 100%);
+      margin: 0;
+      padding: 0;
     }
-
     .cute-card {
       background: rgba(255, 255, 255, 0.92);
       border-radius: 36px;
       box-shadow: 0 12px 40px rgba(255, 128, 171, 0.18);
-      padding: 2.5rem 1.5rem;
+      padding: 2rem;
       max-width: 480px;
       margin: auto;
-      margin-bottom: 2rem;
-      animation: fadeIn 0.7s;
-      
     }
-
     .emoji-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 1rem;
-      justify-content: center;
+      margin-top: 1rem;
     }
-
     .emoji-btn {
       background: linear-gradient(135deg, #ffe3f0 60%, #e0f7fa 100%);
       border: none;
       border-radius: 22px;
       padding: 1rem;
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 2rem;
       color: #ff80ab;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(255, 128, 171, 0.1);
       cursor: pointer;
-      transition: all 0.3s ease;
-      height: 100%;
-      text-align: center;
     }
-
-    .emoji-btn:hover {
-      background: linear-gradient(135deg, #ffc1da, #c0f5f1);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 128, 171, 0.2);  
-      border: 3px solid #00bcd4;
-        
-    }
-
     .emoji-btn.selected {
-      background: linear-gradient(135deg, #ffb6d5 60%, #b2ebf2 100%);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(255, 128, 171, 0.3);
-      transform: scale(1.06) translateY(-4px);
+      background: #ffb6d5;
+      color: white;
     }
-
+    .emoji-btn span {
+      font-size: 1rem;
+      font-weight: bold;
+    }
     .step-title {
       color: #ff0055;
       font-weight: bold;
-      font-size: 1.6rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      margin: 1rem 0;
     }
-
     .btn-main {
       background: linear-gradient(90deg, #ff80ab 0%, #b2ebf2 100%);
       color: #121111;
       border: none;
       font-weight: 700;
       border-radius: 24px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 0.7rem 2.2rem;
+      font-size: 1.1rem;
+    }
+    .lang-btn {
+      background: #fff;
+      border: 2px solid #ff80ab;
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
       font-size: 1.2rem;
-      transition: 0.2s;
+      font-weight: bold;
+      color: #ff4081;
+      margin-left: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
-
-    .btn-main:disabled {
-      opacity: 0.6;
-      pointer-events: none;
+    .lang-btn:hover {
+      background-color: #ffb6d5;
+      color: white;
+      transform: scale(1.05);
     }
-
-    .btn-main:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    .lang-btn.active {
+      background-color: #ff80ab;
+      color: white;
     }
-
-    @keyframes flavor-bounce {
-      0%   { transform: scale(1) translateY(0); }
-      30%  { transform: scale(1.12) translateY(-8px); }
-      60%  { transform: scale(0.97) translateY(2px); }
-      100% { transform: scale(1) translateY(0); }
-    }
-    .emoji-btn span {
-            font-size: 1rem !important;
-            color: #f00668;
-            font-weight: 700 !important;
-        }
-    
-    .flavor-bounce {
-      animation: flavor-bounce 0.4s;
-    }
-    .emoji-btn.selected,
-    .emoji-btn:hover {
-            background: linear-gradient(135deg, #ffb6d5 60%, #b2ebf2 100%);
-            color: #fff;
-            box-shadow: 0 8px 32px 4px #ffb6d5, 0 2px 8px #fff8fc;
-            border: 3px solid #fb037f;
-            transform: scale(1.07) translateY(-3px);
-        }
     @media (max-width: 576px) {
-        .cute-card {
-            padding: 1.5rem 1rem;
-            border-radius: 24px;
-            max-width: 100%;
-        }
-      .step-title {
-        font-size: 1.2rem !important;
-      }
-
-      .emoji-btn {
-        font-size: 1.2rem;      
-      }
-      .btn-main,
-      .emoji-btn span {
-        font-size: 0.8rem;
+      .lang-btn {
+        padding: 0.3rem 0.8rem;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="container py-4">
-    <h1 class="text-center mb-4" style="color:#ff0055;font-weight:bold;">
-      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:6px;">
-        <path d="M12 2C13.1 2 14 2.9 14 4v1.38c0 .38.21.73.55.89l4.9 2.45c.34.17.55.52.55.9V19c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V9.62c0-.38.21-.73.55-.89l4.9-2.45c.34-.17.55-.52.55-.9V4c0-1.1.9-2 2-2z" fill="#ff80ab"/>
-      </svg>
-      Menu R-CORNER
-    </h1>
+    <!-- Nút chuyển ngôn ngữ -->
+    <div class="d-flex justify-content-end mb-3">
+      <button id="btn-lang-vi" class="lang-btn" onclick="setLanguage('vi')">🇻🇳</button>
+      <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">🇺🇸</button>
+    </div>
 
-    <div class="cute-card">
-      <div class="text-center">
-        <img src="drink.png" alt="drink icon" style="width:90px;height:90px;filter:drop-shadow(0 4px 12px #ffb6d5);">
+    <h1 class="text-center" style="color:#ff0055;font-weight:bold;" data-i18n="menuTitle">Menu R-CORNER</h1>
+
+    <div class="cute-card text-center">
+      <img src="drink.png" alt="drink icon" style="width:90px;height:90px;">
+      <div class="step-title" data-i18n="howAreYou">Hôm nay bạn cảm thấy thế nào?</div>
+      <p data-i18n="chooseEmotionPrompt">Chọn cảm xúc của bạn để R-CORNER gợi ý món nước phù hợp nhé!</p>
+
+      <div class="emoji-grid">
+        <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span data-i18n="crushNoReply">Crush chưa rep</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Mệt mỏi', this)">😩🛌<span data-i18n="tiredAllOver">Mệt mỏi toàn tập</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Tăng động', this)">😝🔥<span data-i18n="overlyHyper">Tăng động quá đà</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Lạnh lùng', this)">😎🧊<span data-i18n="coolIndifferent">Lạnh lùng hờ hững</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Chill', this)">😌🌿<span data-i18n="gentlyChill">Chill nhẹ nhàng</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Nổi loạn', this)">🔥🧨<span data-i18n="wannaRebel">Nổi loạn muốn phá</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Buồn', this)">😔💭<span data-i18n="sadNoReason">Buồn không lý do</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Hy vọng', this)">🐣☘️<span data-i18n="gentleHope">Hy vọng nhẹ nhàng</span></button>
+        <button class="emoji-btn" onclick="selectEmotion('Lạc quan', this)">🍓🥰<span data-i18n="optimisticJoy">Lạc quan vui vẻ</span></button>
       </div>
-      <div class="step-title">Hôm nay bạn cảm thấy thế nào?</div>
-      <p class="text-center mb-3">Chọn cảm xúc của bạn để R-CORNER gợi ý món nước phù hợp nhé!</p>
 
-      <div class="emoji-grid flavor-bounce flex-wrap justify-content-center mb-3">
-        <button class="emoji-btn" onclick="selectEmotion('Crush', this)">😳📱<span>Crush chưa rep</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Mệt mỏi', this)">😩🛌<span>Mệt mỏi toàn tập</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Tăng động', this)">😝🔥<span>Tăng động quá đà</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Lạnh lùng', this)">😎🧊<span>Lạnh lùng hờ hững</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Chill', this)">😌🌿<span>Chill nhẹ nhàng</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Nổi loạn', this)">🔥🧨<span>Nổi loạn muốn phá</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Buồn', this)">😔💭<span>Buồn không lý do</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Hy vọng', this)">🐣☘️<span>Hy vọng nhẹ nhàng</span></button>
-        <button class="emoji-btn" onclick="selectEmotion('Lạc quan', this)">🍓🥰<span>Lạc quan vui vẻ</span></button>
-      </div>
-
-      <div class="text-center mt-4">
-        <button class="btn btn-main" onclick="goToStep2()" id="emotion-next" >Tiếp tục ➤</button>
+      <div class="mt-4">
+        <button class="btn btn-main" id="emotion-next" onclick="goToStep2()" data-i18n="continueButton">Tiếp tục ➤</button>
       </div>
     </div>
   </div>
 
   <script>
     let selectedEmotion = '';
+    let translationsData = {};
 
     function selectEmotion(emotion, btn) {
       selectedEmotion = emotion;
-
-      document.querySelectorAll('.emoji-btn').forEach(b => {
-        b.classList.remove('selected', 'flavor-bounce');
-      });
-
-      btn.classList.add('selected', 'flavor-bounce');
-
-      setTimeout(() => btn.classList.remove('flavor-bounce'), 400);
-
+      document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
       document.getElementById('emotion-next').disabled = false;
     }
 
@@ -205,6 +142,45 @@
       localStorage.setItem('selectedEmotion', selectedEmotion);
       window.location.href = 'page2.html';
     }
+
+    async function loadLanguage(lang) {
+      if (Object.keys(translationsData).length === 0) {
+        try {
+          const res = await fetch('lang.json');
+          translationsData = await res.json();
+        } catch (err) {
+          console.error('Lỗi tải file ngôn ngữ:', err);
+          return;
+        }
+      }
+
+      const translations = translationsData[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (el.tagName === 'BUTTON' && el.classList.contains('emoji-btn')) {
+          const span = el.querySelector('span[data-i18n]');
+          if (span && translations[span.getAttribute('data-i18n')]) {
+            span.textContent = translations[span.getAttribute('data-i18n')];
+          }
+        } else if (translations[key]) {
+          el.textContent = translations[key];
+        }
+      });
+
+      // Highlight nút ngôn ngữ đang được chọn
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`btn-lang-${lang}`).classList.add('active');
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem('language', lang);
+      loadLanguage(lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('language') || 'vi';
+      setLanguage(savedLang);
+    });
   </script>
 </body>
 </html>
