@@ -138,11 +138,36 @@
                 height: 32px !important;
             }
         }
+        .lang-btn {
+  background: #fff;
+  border: 2px solid #ff80ab;
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.lang-btn:hover {
+  background-color: #ffb6d5;
+  color: white;
+  transform: scale(1.05);
+}
+.lang-btn.active {
+  background-color: #ff80ab;
+  color: white;
+}
     </style>
 </head>
 
 <body>
     <div class="container py-3">
+        <div class="d-flex justify-content-end mb-3">
+        <button id="btn-lang-vi" class="lang-btn" onclick="setLanguage('vi')">🇻🇳</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">🇺🇸</button>
+    </div>
         <h1 class="text-center mb-4"
             style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
@@ -211,15 +236,31 @@
     let html = `
     <div class="d-flex justify-content-center align-items-center mb-2" style="gap:0.7rem;">
         <span style="font-size:1.5rem;">🎉</span>
-        <span class="step-title mb-0" style="font-size:1.18rem;color:#ff0055;font-weight:bold;letter-spacing:0.5px;line-height:1.2;">Ly nước của bạn đã sẵn sàng!</span>
+        <span class="step-title mb-0" data-i18n="drinkReady" 
+              style="font-size:1.18rem;color:#ff0055;font-weight:bold;letter-spacing:0.5px;line-height:1.2;">
+            Ly nước của bạn đã sẵn sàng!
+        </span>
         <img src="drink.png" alt="drink icon" style="width:68px;height:68px;filter:drop-shadow(0 4px 12px #ff0055);margin-bottom:0;">
     </div>
+    
     <img class="drink-img mx-auto mb-3" src="${drink.img}" alt="Ly nước">
-    <h4 style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;font-size:1.25rem;margin-bottom:0.5rem;">${drink.name}</h4>
-    <div class="fw-bold mb-1" style="color:#ff7043;font-size:1.1rem;">${drink.price}</div>
-    <div class="mb-2" style="font-size:1.05rem;"><strong style="color:black;">Số lượng:</strong> <span style="color:black;font-weight:600;">${quantity}</span></div>
+    
+    <h4 style="color:#ff0055;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;
+               font-size:1.25rem;margin-bottom:0.5rem;">
+        ${drink.name}
+    </h4>
+    
+    <div class="fw-bold mb-1" style="color:#ff7043;font-size:1.1rem;">
+        ${drink.price}
+    </div>
+    
+    <div class="mb-2" style="font-size:1.05rem;">
+        <strong style="color:black;" data-i18n="quantity">Số lượng:</strong> 
+        <span style="color:black;font-weight:600;">${quantity}</span>
+    </div>
+    
     <div class="mb-2">
-        <strong style="color:black;font-size:1rem;">Topping bạn chọn:</strong>
+        <strong style="color:black;font-size:1rem;" data-i18n="yourToppings">Topping bạn chọn:</strong>
         <div class="d-flex flex-column align-items-center gap-1 mt-1">
 ${
     toppings.length > 0
@@ -238,8 +279,8 @@ ${
 
     </div>
     
-    <div id="total-price" style="font-size: 18px; font-weight: bold; margin-top: 20px; color:black;"">
-    💰 Tổng cộng: 
+    <div id="total-price"  style="font-size: 18px; font-weight: bold; margin-top: 20px; color:black;"">
+    <span data-i18n="total">💰 Tổng cộng: </span>
     <span style="color:black;">
         ${(
             (parseInt(drink.price.replace(/[^\d]/g, '')) || 0) * quantity +
@@ -249,15 +290,20 @@ ${
 
 </div>
 <div class="mb-3">
-        <strong style="color:red;font-size:1rem;">Topping tặng thêm:</strong>
-        <div class="d-flex flex-column align-items-center gap-1 mt-1">
-            <span class="topping-badge" style="color:#ff0055;font-size:1.1rem;">${toppingIcons[luckyTopping] || '✨'} ${luckyTopping}</span>
-        </div>
+    <strong style="color:red;font-size:1rem;" data-i18n="bonusTopping">Topping tặng thêm:</strong>
+    <div class="d-flex flex-column align-items-center gap-1 mt-1">
+        <span class="topping-badge" style="color:#ff0055;font-size:1.1rem;">
+            ${toppingIcons[luckyTopping] || '✨'} ${luckyTopping}
+        </span>
     </div>
+</div>
 
-    <div class="mt-4">
-        <button class="btn btn-main px-4" onclick="window.location.href='index.html'">Đặt lại</button>
-    </div>
+<div class="mt-4" id="reset">
+    <button class="btn btn-main px-4" id="reset" onclick="window.location.href='index.html'" data-i18n="resetOrder">
+        Đặt lại
+    </button>
+</div>
+
     
     `;
 
@@ -265,6 +311,45 @@ ${
 }
 
         renderFinalCard();
+
+
+    let translationsData = {};
+    const translations = translationsData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+
+    async function loadLanguage(lang) {
+    if (Object.keys(translationsData).length === 0) {
+      const res = await fetch('lang.json');
+      translationsData = await res.json();
+    }
+    const translations = translationsData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`btn-lang-${lang}`).classList.add('active');
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    loadLanguage(lang);
+  }
+
+  window.onload = async function () {
+    if (!localStorage.getItem('selectedEmotion')) {
+      window.location.href = 'page5.html';
+    }
+    const savedLang = localStorage.getItem('language') || 'vi';
+    await setLanguage(savedLang);
+  }
     </script>
 </body>
 

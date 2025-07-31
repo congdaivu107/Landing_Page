@@ -27,8 +27,25 @@
     "back": "Quay lại",
     "next": "Tiếp tục",
 
-    "sug": "Gợi ý món nước dành riêng cho vibe của bạn nè!",
-    "quantity":"Số lượng"
+    "suggestionMsg": "Gợi ý món nước dành riêng cho vibe của bạn nè!",
+    "quantityLabel": "Số lượng:",
+    "continue": "Tiếp tục",
+    "otherFlavors": "Thích đổi vị? Mình còn tận 72 vị khác chờ bạn thử á!",
+
+    "chooseToppingTitle": "Chọn topping bạn thích",
+"chooseToppingSubtitle": "Thêm topping cho ly nước của bạn thêm hấp dẫn!",
+
+"luckyTitle": "Vòng quay may mắn - Quay để nhận topping tặng thêm!",
+    "luckySub": "Chúc bạn may mắn nhận được topping hấp dẫn từ R-CORNER nhé!",
+    "spinNow": "Quay ngay",
+
+    "drinkReady": "Ly nước của bạn đã sẵn sàng!",
+    "quantity": "Số lượng:",
+    "yourToppings": "Topping bạn chọn:",
+
+    "bonusTopping": "Topping tặng thêm:",
+    "resetOrder": "Đặt lại",
+    "total": "Tổng cộng"
   },
   "en": {
     "menuTitle": "R-CORNER Menu",
@@ -58,7 +75,25 @@
     "back": "Back",
     "next": "Next",
 
-    "sug": "Suggested drinks for your vibe!",
-    "quantity": "Quantity"
+     "suggestionMsg": "Here's a drink tailored just for your vibe!",
+    "quantityLabel": "Quantity:",
+    "continue": "Continue",
+    "otherFlavors": "Wanna switch it up? We've got 72 other flavors waiting!",
+
+
+    "chooseToppingTitle": "Choose your favorite toppings",
+"chooseToppingSubtitle": "Add toppings to make your drink more exciting!",
+
+"luckyTitle": "Lucky Wheel – Spin to win a bonus topping!",
+    "luckySub": "Good luck! Hope you win a tasty topping from R-CORNER!",
+    "spinNow": "Spin now",
+
+    "drinkReady": "Your drink is ready!",
+    "quantity": "Quantity:",
+    "yourToppings": "Your chosen toppings:",
+
+    "bonusTopping": "Bonus topping:",
+    "resetOrder": "Reset order",
+    "total":"Total"
   }
 }

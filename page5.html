@@ -147,65 +147,99 @@
                 border-radius: 16px;
             }
         }
+
+        .lang-btn {
+  background: #fff;
+  border: 2px solid #ff80ab;
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.lang-btn:hover {
+  background-color: #ffb6d5;
+  color: white;
+  transform: scale(1.05);
+}
+.lang-btn.active {
+  background-color: #ff80ab;
+  color: white;
+}
     </style>
 </head>
 
 <body>
     <div class="container py-3">
-        <h1 class="text-center mb-4"
-            style="color:#f80053;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
-            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"
-                style="vertical-align:middle;margin-bottom:4px;">
-                <path
-                    d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
-                    fill="#ff80ab" />
-            </svg>
-            Menu R-CORNER
-        </h1>
+        <div class="d-flex justify-content-end mb-3">
+        <button id="btn-lang-vi" class="lang-btn" onclick="setLanguage('vi')">🇻🇳</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">🇺🇸</button>
     </div>
-    <div class="cute-card">
-        <div class="text-center mb-3">
-            <img src="drink.png" alt="drink icon"
-                style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffd54f);margin-bottom:0.5rem;">
-        </div>
-        <div class="step-title text-center">Vòng quay may mắn - Quay để nhận topping tặng thêm!</div>
-        <div class="mb-4 text-center" style="color:#eb0000;font-size:1.05rem;">Chúc bạn may mắn nhận được topping hấp dẫn
-            từ R-CORNER nhé!</div>
-        <div class="lucky-wheel" id="lucky-wheel"
-    style="background:none;box-shadow:none;border:none;position:relative;width:320px;height:320px;">
-
-            <svg id="wheel-svg" width="320" height="320" viewBox="0 0 320 320" style="display:block;margin:0 auto;">
-                <g id="wheel-slices">
-                    <!-- Các lát sẽ được vẽ bằng JS -->
-                </g>
-            </svg>
-            <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);z-index:2;">
-    <svg width="36" height="28" viewBox="0 0 36 28">
-        <polygon points="0,0 36,0 18,28" fill="#ff7043" stroke="#fff" stroke-width="2" />
+        <h1 class="text-center mb-4"
+    style="color:#f80053;font-weight:bold;font-family:'Quicksand',Arial,sans-serif;letter-spacing:1px;">
+    <svg width="28" height="28" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-bottom:4px;">
+        <path
+            d="M12 2C13.1046 2 14 2.89543 14 4V5.38268C14 5.76522 14.214 6.11742 14.5528 6.27639L19.4472 8.72361C19.786 8.88258 20 9.23478 20 9.61732V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9.61732C4 9.23478 4.214 8.88258 4.55279 8.72361L9.44721 6.27639C9.786 6.11742 10 5.76522 10 5.38268V4C10 2.89543 10.8954 2 12 2Z"
+            fill="#ff80ab" />
     </svg>
+    <span data-i18n="menuTitle">Menu R-CORNER</span>
+</h1>
+
+<div class="cute-card">
+    <div class="text-center mb-3">
+        <img src="drink.png" alt="drink icon"
+            style="width:80px;height:80px;filter:drop-shadow(0 4px 12px #ffd54f);margin-bottom:0.5rem;">
+    </div>
+
+    <div class="step-title text-center" data-i18n="luckyTitle">Vòng quay may mắn - Quay để nhận topping tặng thêm!</div>
+
+    <div class="mb-4 text-center" style="color:#eb0000;font-size:1.05rem;" data-i18n="luckySub">
+        Chúc bạn may mắn nhận được topping hấp dẫn từ R-CORNER nhé!
+    </div>
+
+    <div class="lucky-wheel" id="lucky-wheel"
+        style="background:none;box-shadow:none;border:none;position:relative;width:320px;height:320px;">
+        <svg id="wheel-svg" width="320" height="320" viewBox="0 0 320 320" style="display:block;margin:0 auto;">
+            <g id="wheel-slices">
+                <!-- Các lát sẽ được vẽ bằng JS -->
+            </g>
+        </svg>
+        <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);z-index:2;">
+            <svg width="36" height="28" viewBox="0 0 36 28">
+                <polygon points="0,0 36,0 18,28" fill="#ff7043" stroke="#fff" stroke-width="2" />
+            </svg>
+        </div>
+
+        <div id="wheel-label"
+            style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                   font-size:1.2rem;font-weight:bold;color:#ff7043;pointer-events:none;z-index:1;">
+        </div>
+    </div>
+
+    <div class="lucky-result text-center mt-3" id="lucky-result"></div>
+
+    <div class="text-center mt-4">
+        <button class="btn-main px-4" onclick="spinWheel()" id="spin-btn">
+            <span data-i18n="spinNow">Quay ngay</span>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="#000000" stroke-width="2" />
+                <path d="M12 6v6l4 2" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="text-center mt-3">
+        <button class="btn-back px-4" onclick="goBackToStep4()" data-i18n="back">Quay lại</button>
+    </div>
+
+    <div id="confetti"
+        style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;">
+    </div>
 </div>
 
-
-            <div id="wheel-label"
-                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.2rem;font-weight:bold;color:#ff7043;pointer-events:none;z-index:1;">
-            </div>
-        </div>
-        <div class="lucky-result" id="lucky-result"></div>
-        <div class="text-center mt-4">
-            <button class="btn-main px-4" onclick="spinWheel()" id="spin-btn">Quay ngay <svg width="20" height="20"
-                    fill="none" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke="#000000" stroke-width="2" />
-                    <path d="M12 6v6l4 2" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg></button>
-        </div>
-        <div class="text-center mt-3">
-            <button class="btn-back px-4" onclick="goBackToStep4()">Quay lại</button>
-        </div>
-        <div id="confetti"
-            style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;">
-        </div>
-    </div>
     <script>
         const toppings = ['Trân châu', 'Thạch đào', 'Vải', 'Đào', 'Thạch dừa'];
         const toppingColors = ['#ffe082', '#b2ebf2', '#f8bbd0', '#c8e6c9', '#ffd54f'];
@@ -305,6 +339,44 @@ document.getElementById('lucky-result').innerHTML = `
             }
             setTimeout(() => { confetti.style.display = 'none'; }, 1400);
         }
+
+        let translationsData = {};
+    const translations = translationsData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+
+    async function loadLanguage(lang) {
+    if (Object.keys(translationsData).length === 0) {
+      const res = await fetch('lang.json');
+      translationsData = await res.json();
+    }
+    const translations = translationsData[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) {
+        el.textContent = translations[key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`btn-lang-${lang}`).classList.add('active');
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    loadLanguage(lang);
+  }
+
+  window.onload = async function () {
+    if (!localStorage.getItem('selectedEmotion')) {
+      window.location.href = 'page4.html';
+    }
+    const savedLang = localStorage.getItem('language') || 'vi';
+    await setLanguage(savedLang);
+  }
     </script>
 </body>
 
